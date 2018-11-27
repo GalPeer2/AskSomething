@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/infoapp"
+        android:title="info about app"
+        app:showAsAction="never"></item>
+    <item
+        android:id="@+id/toAdresses"
+        android:title="My Email Adresses"
+        app:showAsAction="never"></item>
+    <item
+        android:id="@+id/exit"
+        android:title="exit app"
+        app:showAsAction="never"></item>
+
+</menu>

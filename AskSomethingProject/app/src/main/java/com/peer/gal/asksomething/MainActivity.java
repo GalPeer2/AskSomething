@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar mToolbar = (Toolbar) findViewById(R.menu.main_menu);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);*/
+startActivity(new Intent(MainActivity.this,SendMail.class));
 
     }
 

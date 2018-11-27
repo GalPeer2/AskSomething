@@ -20,7 +20,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -29,11 +29,8 @@ dependencies {
     compile 'com.android.support:design:22.2.1'
     compile 'com.koushikdutta.async:androidasync:2.+'
 
-    compile group: 'javax.mail', name: 'mail', version: '1.4.1'
-
-    // https://mvnrepository.com/artifact/javax.activation/activation
-    compile group: 'javax.activation', name: 'activation', version: '1.1'
-
-
     testCompile 'junit:junit:4.12'
+    compile files('D:/Projects/Android-Connect-Four-master/AskSomething/AskSomethingProject/Libs/activation.jar')
+    compile files('D:/Projects/Android-Connect-Four-master/AskSomething/AskSomethingProject/Libs/additionnal.jar')
+    compile files('D:/Projects/Android-Connect-Four-master/AskSomething/AskSomethingProject/Libs/mail.jar')
 }
