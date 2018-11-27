@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
+//https://stackoverflow.com/questions/18778240/solve-error-javax-mail-authenticationfailedexception
+
 public class SendMail extends AppCompatActivity {
     ArrayList<String> MyAddresses = new ArrayList<String>();
 TextView tv;
@@ -99,14 +101,46 @@ TextView tv;
     }*/
     }
 
-    public void onClick(View v) {
-        try {
-            GMailSender sender = new GMailSender("galpeerschool@gmail.com","galpeerschool1");
-            sender.sendMail("This is Subject",
-                    "This is Body",
-                    "galpeerschool@gmail.com","galpeer2@gmail.com");
-        } catch (Exception e) {
-            Log.e("SendMail", e.getMessage(), e);
+    class Task implements Runnable {
+
+        @Override
+
+        public void run() {
+            try {
+
+
+
+/*
+                GMailSender sender = new GMailSender("galpeerschool@gmail.com","----");
+               */
+
+                GMailSender sender = new GMailSender("zvikapeerm@gmail.com","---");
+
+                sender.sendMail("This is Subject",
+                        "This is Body",
+                        "galpeerschool@gmail.com","zvikapeerm@gmail.com");
+
+                int j = 6;
+
+                j = 9;
+
+
+
+            }
+
+            catch (Exception e) {
+                Log.e("SendMail", e.getMessage(), e);
+            }
+
         }
+    }
+
+
+    public void onClick(View v) {
+
+            new Thread(new Task()).start();
+
+
+
     }
 }
