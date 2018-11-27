@@ -113,7 +113,7 @@ TextView tv;
 /*
                 GMailSender sender = new GMailSender("galpeerschool@gmail.com","----");
                */
-
+//
                 GMailSender sender = new GMailSender("zvikapeerm@gmail.com","---");
 
                 sender.sendMail("This is Subject",
