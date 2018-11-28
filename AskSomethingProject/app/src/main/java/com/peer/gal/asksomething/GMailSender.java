@@ -55,7 +55,7 @@ public class GMailSender extends javax.mail.Authenticator {
 
 
 
-            DataHandler handler = new DataHandler(new ByteArrayDataSource(body.getBytes(), "text/plain"));
+            DataHandler handler = new DataHandler(new ByteArrayDataSource(body.getBytes(), "text/html"));
 
             message.setSender(new InternetAddress(sender));
             message.setSubject(subject);
