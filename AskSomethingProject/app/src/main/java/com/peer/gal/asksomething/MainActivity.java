@@ -8,10 +8,13 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.peer.gal.asksomething.State.AsklSomeThingState;
+import  com.peer.gal.asksomething.State.StateMgr;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +27,22 @@ public class MainActivity extends AppCompatActivity {
         Toolbar mToolbar = (Toolbar) findViewById(R.menu.main_menu);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);*/
+
+        StateMgr theStateMgr = new StateMgr (this );
+
+        AsklSomeThingState theAsklSomeThingState = new AsklSomeThingState ();
+
+        theAsklSomeThingState.getMap().put("Test" , "164");
+
+        theStateMgr.SaveState( theAsklSomeThingState);
+
+        AsklSomeThingState theRetrievedAsklSomeThingState = (AsklSomeThingState)theStateMgr.LoadState();
+
+        String theValue = theRetrievedAsklSomeThingState.getMap().get("Test");
+
+        Log.i("myTag", "onCreate: " + theValue );
+
+
 startActivity(new Intent(MainActivity.this,SendMail.class));
 
     }
