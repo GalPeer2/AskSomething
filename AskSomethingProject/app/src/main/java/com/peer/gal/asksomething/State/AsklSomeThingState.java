@@ -16,6 +16,9 @@ public class AsklSomeThingState {
 
     private Map<String,String> map =  new HashMap<String,String>();
 
+    private int mAge ;
+
+
 
     public Map<String, String> getMap() {
         return map;
@@ -23,5 +26,13 @@ public class AsklSomeThingState {
 
     public void setMap(Map<String, String> map) {
         this.map = map;
+    }
+
+    public int getmAge() {
+        return mAge;
+    }
+
+    public void setmAge(int mAge) {
+        this.mAge = mAge;
     }
 }

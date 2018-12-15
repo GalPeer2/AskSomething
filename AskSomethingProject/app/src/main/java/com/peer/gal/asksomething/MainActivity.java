@@ -23,16 +23,46 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        /*
+        String theAddress = "192.168.2.100";
+
+        String ans1 = "1";
+
+        String ans2 = "2";
+
+
+        String ans3 = "3";
+
+
+        String ans4 = "4";
+
+
+        String mailAddress = "mail address";
+
+        String que = "The question";
+
+        String bodyMail = ("<h1>" + que + "</h1><br>Clickme to send " +
+                "<a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans1+"\">"+ans1+"</a>"+
+                " <a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans2+"\">"+ans1+"</a>"+
+                " <a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans3+"\">"+ans1+"</a>"+
+                " <a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans4+"\">"+ans1+"</a>");
+
+*/
 /*
         Toolbar mToolbar = (Toolbar) findViewById(R.menu.main_menu);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);*/
 
+/*
         StateMgr theStateMgr = new StateMgr (this );
 
         AsklSomeThingState theAsklSomeThingState = new AsklSomeThingState ();
 
         theAsklSomeThingState.getMap().put("Test" , "164");
+
+        theAsklSomeThingState.getMap().put("Dog" , "How How ");
 
         theStateMgr.SaveState( theAsklSomeThingState);
 
@@ -42,8 +72,10 @@ public class MainActivity extends AppCompatActivity {
 
         Log.i("myTag", "onCreate: " + theValue );
 
+        */
 
-startActivity(new Intent(MainActivity.this,SendMail.class));
+
+        //startActivity(new Intent(MainActivity.this,SendMail.class));
 
     }
 
@@ -95,7 +127,7 @@ startActivity(new Intent(MainActivity.this,SendMail.class));
     }
     public void moveToStartWorking(View view)
     {
-       // startActivity(new Intent(MainActivity.this,StartWorking.class));
+        startActivity(new Intent(MainActivity.this,InsertQueNAns.class));
     }
 
 }

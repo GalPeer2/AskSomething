@@ -25,6 +25,10 @@ import java.util.List;
 //https://stackoverflow.com/questions/18778240/solve-error-javax-mail-authenticationfailedexception
 //https://stackoverflow.com/questions/25547828/i-want-to-send-html-type-in-email-body-with-gmail-sender
 
+//https://stackoverflow.com/questions/18778240/solve-error-javax-mail-authenticationfailedexception
+
+
+
 public class SendMail extends AppCompatActivity {
     ArrayList<String> MyAddresses = new ArrayList<String>();
     TextView tv;
@@ -128,16 +132,17 @@ public class SendMail extends AppCompatActivity {
                 GMailSender sender = new GMailSender("galpeerschool@gmail.com","----");
                */
 //
-                    GMailSender sender = new GMailSender("asksomethingsystem@gmail.com", "android666");
+                    GMailSender sender = new GMailSender("asksomethingsystem@gmail.com", "go2hall");
 
                     // m.setBody(Html.fromHtml("<h1>Title</h1><br>Username "+ username +" and password"));
 
                     String theAddress = getLocalIpAddress();
 
-                    bodyMail = ("<h1>" + que + "</h1><br>Clickme to send <a href=\"http:" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer=\">"+ans1+" </a>"+
-                           " <a href=\"http:" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer=\">"+ans2+" </a>"+
-                            " <a href=\"http:" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer=\">"+ans3+" </a>"+
-                           " <a href=\"http:" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer=\">"+ans4+" </a>");
+                    bodyMail = ("<h1>" + que + "</h1><br>Clickme to send: " +
+                            "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans1+"\">"+ans1+"</a>"+
+                           "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans2+"\">"+ans1+"</a>"+
+                            "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans3+"\">"+ans1+"</a>"+
+                           "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans4+"\">"+ans1+"</a>");
 
                     /*
                         bodyMail = "Hello, you have been asked a question" + "\n"
