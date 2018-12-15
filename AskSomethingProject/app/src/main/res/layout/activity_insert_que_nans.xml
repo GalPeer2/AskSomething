@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/simansheela"
+    android:layout_height="match_parent"
+    tools:context="com.peer.gal.asksomething.InsertQueNAns">
+    <LinearLayout
+        android:layout_width="363dp"
+        android:layout_height="377dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="please enter your question, then give 4 opptional answers."
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/queet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=" question" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4 answes:"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="239dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="58dp"
+                android:layout_height="240dp"
+
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/star1"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:src="@android:drawable/star_on" />
+
+                <ImageView
+                    android:id="@+id/star2"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:src="@android:drawable/star_on" />
+
+                <ImageView
+                    android:id="@+id/star3"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:src="@android:drawable/star_on" />
+
+                <ImageView
+                    android:id="@+id/star4"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:src="@android:drawable/star_on" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="309dp"
+                android:layout_height="235dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/ans1et"
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Answer1" />
+
+                <EditText
+                    android:id="@+id/ans2et"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Answer2" />
+
+                <EditText
+                    android:id="@+id/ans3et"
+                    android:layout_width="match_parent"
+                    android:layout_height="59dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Answer3" />
+
+                <EditText
+                    android:id="@+id/ans4et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Answer4" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="157dp"
+        android:layout_height="120dp"
+        android:src="@drawable/sendlogo"
+        android:onClick="takeData"
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="385dp" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="124dp"
+        android:layout_height="189dp"
+        android:src="@drawable/clickhere"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="334dp" />
+
+</android.support.constraint.ConstraintLayout>
