@@ -38,7 +38,7 @@ public class SendMail extends AppCompatActivity {
     String ans1, ans2, ans3, ans4, que;
     Question questionToUpload;
     StateMgr theStateMgr;
-    AsklSomeThingState asklSomeThingState
+    AsklSomeThingState asklSomeThingState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +115,7 @@ public class SendMail extends AppCompatActivity {
                                 "</body> \r\n" +
                                 "</html>";
 
-                if (shakran=true)
+                if (shakran==true)
                 response.send(allreadyVoted  );
                 else {
                     response.send(theThankAswere  );
