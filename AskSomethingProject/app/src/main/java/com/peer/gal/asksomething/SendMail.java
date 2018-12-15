@@ -36,14 +36,17 @@ public class SendMail extends AppCompatActivity {
     User user;
     TextView tv;
     String ans1, ans2, ans3, ans4, que;
+    Question questionToUpload;
+    StateMgr theStateMgr;
+    AsklSomeThingState asklSomeThingState
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_mail);
-        StateMgr theStateMgr = new StateMgr (this );
-        AsklSomeThingState asklSomeThingState= theStateMgr.LoadState();
-        user=asklSomeThingState.getThisUser();
+        theStateMgr = new StateMgr (this );
+        asklSomeThingState= theStateMgr.LoadState();
+        user=asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName());
         MyAddresses=user.getMyEmailAddresses();
         que="";
         MyAddresses.add("galpeer2@gmail.com");
@@ -70,7 +73,6 @@ public class SendMail extends AppCompatActivity {
         server.get("/", new HttpServerRequestCallback() {
             @Override
             public void onRequest(AsyncHttpServerRequest request, AsyncHttpServerResponse response) {
-                String youasked = request.getQuery().toString();
 
 
                 List<String> Sendfor2 = request.getQuery().get("Sendfor");
@@ -81,20 +83,26 @@ public class SendMail extends AppCompatActivity {
 
                 String theanswer = answerlist.get(0);
 
+                List<String> questionlist = request.getQuery().get("question");
+
+                String thequestion = questionlist.get(0);
+                Question questionDealed = getQuestionBytext(user.getMyHistoryQuestions(),thequestion);
+                boolean shakran=containStringIn4Lists(questionDealed.getVotersForAns1(),questionDealed.getVotersForAns2()
+                        ,questionDealed.getVotersForAns3(),questionDealed.getVotersForAns4(),theNameOfTheUser);
                 String theThankAswere =
 
                         "<!DOCTYPE html> \r\n" +
-                        "<html>  \r\n " +
-                        "<head> \r\n" +
-                         "   <title>Thank you </title> \r\n " +
-                         "   <meta charset=\"utf-8\" /> \r\n" +
-                        "</head> \r\n " +
-                        "<body> \r\n" +
+                                "<html>  \r\n " +
+                                "<head> \r\n" +
+                                "   <title>Thank you </title> \r\n " +
+                                "   <meta charset=\"utf-8\" /> \r\n" +
+                                "</head> \r\n " +
+                                "<body> \r\n" +
 
-                         "  <h1>Thank you for voting " + theanswer +"</h1> \r\n" +
+                                "  <h1>Thank you for voting " + theanswer +"</h1> \r\n" +
 
-                        "</body> \r\n" +
-                        "</html>";
+                                "</body> \r\n" +
+                                "</html>";
                 String allreadyVoted =
                         "<!DOCTYPE html> \r\n" +
                                 "<html>  \r\n " +
@@ -106,20 +114,33 @@ public class SendMail extends AppCompatActivity {
                                 "  <h1>You have allready voted "+theanswer+"</h1> \r\n" +
                                 "</body> \r\n" +
                                 "</html>";
-                String answerChanged =
-                        "<!DOCTYPE html> \r\n" +
-                                "<html>  \r\n " +
-                                "<head> \r\n" +
-                                "   <title>Thank you </title> \r\n " +
-                                "   <meta charset=\"utf-8\" /> \r\n" +
-                                "</head> \r\n " +
-                                "<body> \r\n" +
-                                "  <h1>Your has been changed to-' "+theanswer+" ' succsesfully</h1> \r\n" +
-                                "</body> \r\n" +
-                                "</html>";
+
+                if (shakran=true)
+                response.send(allreadyVoted  );
+                else {
+                    response.send(theThankAswere  );
+                    switch (theanswer) {
+                        case ("ans1"): {
+                            questionDealed.getVotersForAns1().add(theNameOfTheUser);
+                            break;
+                        }
+                        case ("ans2"): {
+                            questionDealed.getVotersForAns2().add(theNameOfTheUser);
+                            break;
+                        }
+                        case ("ans3"): {
+                            questionDealed.getVotersForAns3().add(theNameOfTheUser);
+                            break;
+                        }
+                        case ("ans4"): {
+                            questionDealed.getVotersForAns4().add(theNameOfTheUser);
+                            break;
+                        }
+                    }
+                }
+                theStateMgr.SaveState(asklSomeThingState);
 
 
-                response.send(theThankAswere  );
             }
         });
 
@@ -168,6 +189,10 @@ public class SendMail extends AppCompatActivity {
                 que = extras.getString("que");
 
             }
+            questionToUpload=new Question(que,ans1,ans2,ans3,ans4);
+            user.getMyHistoryQuestions().add(questionToUpload);
+            theStateMgr.SaveState(asklSomeThingState);
+
 
             for (String mailAddress : MyAddresses) {
                 try {
@@ -185,10 +210,10 @@ public class SendMail extends AppCompatActivity {
                     String theAddress = getLocalIpAddress();
 
                     bodyMail = ("<h1>" + que + "</h1><br>Clickme to send: " +
-                            "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans1+"\">"+ans1+"</a>"+
-                           "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans2+"\">"+ans2+"</a>"+
-                            "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans3+"\">"+ans3+"</a>"+
-                           "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans4+"\">"+ans4+"</a>");
+                            "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&question="+que+"&answer="+ans1+"\">"+ans1+"</a>"+
+                           "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&question="+que+"&answer="+ans2+"\">"+ans2+"</a>"+
+                            "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&question="+que+"&answer="+ans3+"\">"+ans3+"</a>"+
+                           "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&question="+que+"&answer="+ans4+"\">"+ans4+"</a>");
 
                     /*
 
@@ -209,6 +234,41 @@ public class SendMail extends AppCompatActivity {
             }
         }
     }
+    public Question getQuestionBytext(ArrayList<Question> questions,String theQuestionText)
+    {
+        for (Question question : questions)
+        {
+            if (question.getQue().equals(theQuestionText))
+                return question;
+        }
+        return new Question("r","r","r","r","r");
+    }
+
+    public boolean containStringIn4Lists(ArrayList<String>a,ArrayList<String>b,ArrayList<String>c,ArrayList<String>d, String string)
+    {
+        for (String s:a)
+        {
+            if (s.equals(string))
+                return true;
+        }
+        for (String s:b)
+        {
+            if (s.equals(string))
+                return true;
+        }
+        for (String s:c)
+        {
+            if (s.equals(string))
+                return true;
+        }
+        for (String s:d)
+        {
+            if (s.equals(string))
+                return true;
+        }
+        return false;
+    }
+
 
 }
 

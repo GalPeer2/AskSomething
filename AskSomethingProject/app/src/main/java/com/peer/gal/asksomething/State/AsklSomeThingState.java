@@ -17,22 +17,22 @@ public class AsklSomeThingState {
 
     }
 
-    private List <User> userList;
-    User thisUser;
+    private Map<String,User> dictionary=new HashMap<String, User>();
+    String userName;
 
-    public List<User> getUserList() {
-        return userList;
+    public Map<String, User> getDictionary() {
+        return dictionary;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
+    public void setDictionary(Map<String, User> dictionary) {
+        this.dictionary = dictionary;
     }
 
-    public User getThisUser() {
-        return thisUser;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setThisUser(User thisUser) {
-        this.thisUser = thisUser;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

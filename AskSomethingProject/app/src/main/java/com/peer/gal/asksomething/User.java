@@ -13,6 +13,10 @@ public class User {
     ArrayList<String> myEmailAddresses;
     ArrayList<Question> myHistoryQuestions;
 
+
+
+
+
     public User()
     {
 

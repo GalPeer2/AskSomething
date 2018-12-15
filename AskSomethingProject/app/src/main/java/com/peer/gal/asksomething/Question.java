@@ -1,5 +1,7 @@
 package com.peer.gal.asksomething;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,7 +10,7 @@ import java.util.List;
 
 class Question {
     String que,ans1,ans2,ans3,ans4;
-    List<String> votersForAns1,votersForAns2,votersForAns3,votersForAns4;
+    ArrayList<String> votersForAns1,votersForAns2,votersForAns3,votersForAns4;
 
     public String getQue() {
         return que;
@@ -50,47 +52,44 @@ class Question {
         this.ans4 = ans4;
     }
 
-    public List<String> getVotersForAns1() {
+    public ArrayList<String> getVotersForAns1() {
         return votersForAns1;
     }
 
-    public void setVotersForAns1(List<String> votersForAns1) {
+    public void setVotersForAns1(ArrayList<String> votersForAns1) {
         this.votersForAns1 = votersForAns1;
     }
 
-    public List<String> getVotersForAns2() {
+    public ArrayList<String> getVotersForAns2() {
         return votersForAns2;
     }
 
-    public void setVotersForAns2(List<String> votersForAns2) {
+    public void setVotersForAns2(ArrayList<String> votersForAns2) {
         this.votersForAns2 = votersForAns2;
     }
 
-    public List<String> getVotersForAns3() {
+    public ArrayList<String> getVotersForAns3() {
         return votersForAns3;
     }
 
-    public void setVotersForAns3(List<String> votersForAns3) {
+    public void setVotersForAns3(ArrayList<String> votersForAns3) {
         this.votersForAns3 = votersForAns3;
     }
 
-    public List<String> getVotersForAns4() {
+    public ArrayList<String> getVotersForAns4() {
         return votersForAns4;
     }
 
-    public void setVotersForAns4(List<String> votersForAns4) {
+    public void setVotersForAns4(ArrayList<String> votersForAns4) {
         this.votersForAns4 = votersForAns4;
     }
 
-    public Question(String que, String ans1, String ans2, String ans3, String ans4, List<String> votersForAns1, List<String> votersForAns2, List<String> votersForAns3, List<String> votersForAns4) {
+    public Question(String que, String ans1, String ans2, String ans3, String ans4) {
+
         this.que = que;
         this.ans1 = ans1;
         this.ans2 = ans2;
         this.ans3 = ans3;
         this.ans4 = ans4;
-        this.votersForAns1 = votersForAns1;
-        this.votersForAns2 = votersForAns2;
-        this.votersForAns3 = votersForAns3;
-        this.votersForAns4 = votersForAns4;
     }
 }
