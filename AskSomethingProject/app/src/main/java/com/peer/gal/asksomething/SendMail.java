@@ -74,7 +74,23 @@ public class SendMail extends AppCompatActivity {
 
                 String theanswer = answerlist.get(0);
 
-                response.send("Hello Gal !!!" + youasked+ " the question " + theanswer  );
+                String theThankAswere =
+
+                        "<!DOCTYPE html> \r\n" +
+                        "<html>  \r\n " +
+                        "<head> \r\n" +
+                         "   <title>Thank you </title> \r\n " +
+                         "   <meta charset=\"utf-8\" /> \r\n" +
+                        "</head> \r\n " +
+                        "<body> \r\n" +
+
+                         "  <h1>Thank you for voting " + theanswer +"</h1> \r\n" +
+
+                        "</body> \r\n" +
+                        "</html>";
+
+
+                response.send(theThankAswere  );
             }
         });
 
@@ -132,7 +148,7 @@ public class SendMail extends AppCompatActivity {
                 GMailSender sender = new GMailSender("galpeerschool@gmail.com","----");
                */
 //
-                    GMailSender sender = new GMailSender("asksomethingsystem@gmail.com", "go2hall");
+                    GMailSender sender = new GMailSender("asksomethingsystem@gmail.com", "");
 
                     // m.setBody(Html.fromHtml("<h1>Title</h1><br>Username "+ username +" and password"));
 
@@ -140,9 +156,9 @@ public class SendMail extends AppCompatActivity {
 
                     bodyMail = ("<h1>" + que + "</h1><br>Clickme to send: " +
                             "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans1+"\">"+ans1+"</a>"+
-                           "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans2+"\">"+ans1+"</a>"+
-                            "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans3+"\">"+ans1+"</a>"+
-                           "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans4+"\">"+ans1+"</a>");
+                           "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans2+"\">"+ans2+"</a>"+
+                            "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans3+"\">"+ans3+"</a>"+
+                           "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans4+"\">"+ans4+"</a>");
 
                     /*
                         bodyMail = "Hello, you have been asked a question" + "\n"
