@@ -15,12 +15,13 @@
         tools:layout_editor_absoluteX="9dp"
         tools:layout_editor_absoluteY="8dp">
 
+
         <ImageView
-            android:id="@+id/imageView10"
+            android:id="@+id/imageView5"
             android:layout_width="match_parent"
-            android:layout_height="63dp"
-            android:layout_weight="0.11"
-            app:srcCompat="@drawable/logo" />
+            android:layout_height="58dp"
+            android:src="@drawable/logo"
+            android:layout_weight="0.17" />
 
         <TextView
             android:id="@+id/tv1"
@@ -61,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.11"
-            android:onClick="logIn"
+            android:onClick="logIn2"
             android:text="LET'S START" />
 
         <TextView
@@ -72,15 +73,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="176dp"
-            android:orientation="horizontal">
+            android:layout_height="131dp"
+            android:orientation="horizontal"
+            android:layout_weight="0.05">
+
 
             <ImageView
-                android:id="@+id/imageView9"
-                android:layout_width="217dp"
+                android:id="@+id/imageView4"
+                android:layout_width="172dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/stam1" />
+                android:src="@drawable/stam1"
+                android:layout_weight="0.58" />
 
             <Button
                 android:id="@+id/buttonRegister"
@@ -89,6 +92,9 @@
                 android:layout_weight="1"
                 android:background="#fD0000"
                 android:text="REGISTER" />
+
+
+
         </LinearLayout>
 
     </LinearLayout>

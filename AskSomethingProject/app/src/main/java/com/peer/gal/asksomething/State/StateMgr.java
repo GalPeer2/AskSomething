@@ -38,7 +38,15 @@ public class StateMgr {
 
         File file = new File(path, "AsklSomeThingState.json");
 
-        int length = (int) file.length();
+        if(file.exists() == false )
+        {
+            SaveState ( new AsklSomeThingState() );
+
+            return new AsklSomeThingState() ;
+        }
+
+
+            int length = (int) file.length();
 
         byte[] bytes = new byte[length];
 

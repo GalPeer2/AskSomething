@@ -23,13 +23,14 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         theStateMgr = new StateMgr(this);
+        asklSomeThingState =new AsklSomeThingState();
         asklSomeThingState = theStateMgr.LoadState();
         nameet = (EditText) findViewById(R.id.nameET);
         passwordet = (EditText) findViewById(R.id.passwordET);
         error = (TextView) findViewById(R.id.errorET);
     }
 
-    public void logIn(View view)
+    public void logIn2(View view)
     {
         if (asklSomeThingState==null) {
             error.setText("error,try again or register");return;
@@ -43,8 +44,10 @@ public class Login extends AppCompatActivity {
                 asklSomeThingState.setUserName(name);
                 startActivity(new Intent(Login.this,MainActivity.class));
             }
+            else
             error.setText("error,try again or register");
         }
+        error.setText("error,try again or register");
     }
 
 
