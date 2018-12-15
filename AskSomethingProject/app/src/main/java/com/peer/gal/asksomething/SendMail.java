@@ -52,7 +52,7 @@ public class SendMail extends AppCompatActivity {
         MyAddresses.add("galpeer2@gmail.com");
         SendTestEmail(null);
 
-        StartHttpServer();
+        //StartHttpServer();
 
     }
 
@@ -62,93 +62,7 @@ public class SendMail extends AppCompatActivity {
 
     }
 
-    protected void StartHttpServer() {
-        String theAddress = getLocalIpAddress();
 
-        Log.e("LOG_TAG", theAddress);
-
-        AsyncHttpServer server = new AsyncHttpServer();
-        //List<WebSocket> _sockets = new ArrayList<WebSocket>();
-
-        server.get("/", new HttpServerRequestCallback() {
-            @Override
-            public void onRequest(AsyncHttpServerRequest request, AsyncHttpServerResponse response) {
-
-
-                List<String> Sendfor2 = request.getQuery().get("Sendfor");
-
-                String theNameOfTheUser = Sendfor2.get(0);
-
-                List<String> answerlist = request.getQuery().get("answer");
-
-                String theanswer = answerlist.get(0);
-
-                List<String> questionlist = request.getQuery().get("question");
-
-                String thequestion = questionlist.get(0);
-                Question questionDealed = getQuestionBytext(user.getMyHistoryQuestions(),thequestion);
-                boolean shakran=containStringIn4Lists(questionDealed.getVotersForAns1(),questionDealed.getVotersForAns2()
-                        ,questionDealed.getVotersForAns3(),questionDealed.getVotersForAns4(),theNameOfTheUser);
-                String theThankAswere =
-
-                        "<!DOCTYPE html> \r\n" +
-                                "<html>  \r\n " +
-                                "<head> \r\n" +
-                                "   <title>Thank you </title> \r\n " +
-                                "   <meta charset=\"utf-8\" /> \r\n" +
-                                "</head> \r\n " +
-                                "<body> \r\n" +
-
-                                "  <h1>Thank you for voting " + theanswer +"</h1> \r\n" +
-
-                                "</body> \r\n" +
-                                "</html>";
-                String allreadyVoted =
-                        "<!DOCTYPE html> \r\n" +
-                                "<html>  \r\n " +
-                                "<head> \r\n" +
-                                "   <title>Thank you </title> \r\n " +
-                                "   <meta charset=\"utf-8\" /> \r\n" +
-                                "</head> \r\n " +
-                                "<body> \r\n" +
-                                "  <h1>You have allready voted "+theanswer+"</h1> \r\n" +
-                                "</body> \r\n" +
-                                "</html>";
-
-                if (shakran==true)
-                response.send(allreadyVoted  );
-                else {
-                    response.send(theThankAswere  );
-                    switch (theanswer) {
-                        case ("ans1"): {
-                            questionDealed.getVotersForAns1().add(theNameOfTheUser);
-                            break;
-                        }
-                        case ("ans2"): {
-                            questionDealed.getVotersForAns2().add(theNameOfTheUser);
-                            break;
-                        }
-                        case ("ans3"): {
-                            questionDealed.getVotersForAns3().add(theNameOfTheUser);
-                            break;
-                        }
-                        case ("ans4"): {
-                            questionDealed.getVotersForAns4().add(theNameOfTheUser);
-                            break;
-                        }
-                    }
-                }
-                theStateMgr.SaveState(asklSomeThingState);
-
-
-            }
-        });
-
-        // listen on port 5000
-        server.listen(5000);
-        // browsing http://localhost:5000 will return Hello!!!
-
-    }
 
     public String getLocalIpAddress() {
         try {
