@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SendMail" />
-        <activity android:name=".InsertQueNAns"></activity>
+        <activity android:name=".InsertQueNAns" />
+        <activity android:name=".PracticePieChart"></activity>
     </application>
 
 </manifest>

@@ -26,12 +26,14 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    compile 'com.google.code.gson:gson:2.4'
-    compile 'com.android.volley:volley:1.0.0'
+
 
     compile files('D:/Projects/Android-Connect-Four-master/AskSomething/AskSomethingProject/Libs/activation.jar')
     compile files('D:/Projects/Android-Connect-Four-master/AskSomething/AskSomethingProject/Libs/additionnal.jar')
     compile files('D:/Projects/Android-Connect-Four-master/AskSomething/AskSomethingProject/Libs/mail.jar')
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.android.volley:volley:1.0.0'
+    compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:22.2.1'

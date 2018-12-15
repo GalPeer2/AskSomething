@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         */
 
 
-        //startActivity(new Intent(MainActivity.this,SendMail.class));
+        startActivity(new Intent(MainActivity.this,PracticePieChart.class));
 
     }
 
@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
     public void moveToStartWorking(View view)
     {
         startActivity(new Intent(MainActivity.this,InsertQueNAns.class));
+
     }
 
 }
