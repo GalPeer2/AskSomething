@@ -1,6 +1,9 @@
 package com.peer.gal.asksomething.State;
 
+import com.peer.gal.asksomething.User;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,25 +17,22 @@ public class AsklSomeThingState {
 
     }
 
-    private Map<String,String> map =  new HashMap<String,String>();
+    private List <User> userList;
+    User thisUser;
 
-    private int mAge ;
-
-
-
-    public Map<String, String> getMap() {
-        return map;
+    public List<User> getUserList() {
+        return userList;
     }
 
-    public void setMap(Map<String, String> map) {
-        this.map = map;
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
     }
 
-    public int getmAge() {
-        return mAge;
+    public User getThisUser() {
+        return thisUser;
     }
 
-    public void setmAge(int mAge) {
-        this.mAge = mAge;
+    public void setThisUser(User thisUser) {
+        this.thisUser = thisUser;
     }
 }

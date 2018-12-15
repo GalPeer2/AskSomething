@@ -14,6 +14,8 @@ import com.koushikdutta.async.http.server.AsyncHttpServer;
 import com.koushikdutta.async.http.server.AsyncHttpServerRequest;
 import com.koushikdutta.async.http.server.AsyncHttpServerResponse;
 import com.koushikdutta.async.http.server.HttpServerRequestCallback;
+import com.peer.gal.asksomething.State.AsklSomeThingState;
+import com.peer.gal.asksomething.State.StateMgr;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -30,7 +32,8 @@ import java.util.List;
 
 
 public class SendMail extends AppCompatActivity {
-    ArrayList<String> MyAddresses = new ArrayList<String>();
+    ArrayList<String> MyAddresses;
+    User user;
     TextView tv;
     String ans1, ans2, ans3, ans4, que;
 
@@ -38,6 +41,10 @@ public class SendMail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_mail);
+        StateMgr theStateMgr = new StateMgr (this );
+        AsklSomeThingState asklSomeThingState= theStateMgr.LoadState();
+        user=asklSomeThingState.getThisUser();
+        MyAddresses=user.getMyEmailAddresses();
         que="";
         MyAddresses.add("galpeer2@gmail.com");
         SendTestEmail(null);
@@ -88,6 +95,28 @@ public class SendMail extends AppCompatActivity {
 
                         "</body> \r\n" +
                         "</html>";
+                String allreadyVoted =
+                        "<!DOCTYPE html> \r\n" +
+                                "<html>  \r\n " +
+                                "<head> \r\n" +
+                                "   <title>Thank you </title> \r\n " +
+                                "   <meta charset=\"utf-8\" /> \r\n" +
+                                "</head> \r\n " +
+                                "<body> \r\n" +
+                                "  <h1>You have allready voted "+theanswer+"</h1> \r\n" +
+                                "</body> \r\n" +
+                                "</html>";
+                String answerChanged =
+                        "<!DOCTYPE html> \r\n" +
+                                "<html>  \r\n " +
+                                "<head> \r\n" +
+                                "   <title>Thank you </title> \r\n " +
+                                "   <meta charset=\"utf-8\" /> \r\n" +
+                                "</head> \r\n " +
+                                "<body> \r\n" +
+                                "  <h1>Your has been changed to-' "+theanswer+" ' succsesfully</h1> \r\n" +
+                                "</body> \r\n" +
+                                "</html>";
 
 
                 response.send(theThankAswere  );
@@ -139,6 +168,7 @@ public class SendMail extends AppCompatActivity {
                 que = extras.getString("que");
 
             }
+
             for (String mailAddress : MyAddresses) {
                 try {
 
@@ -161,16 +191,11 @@ public class SendMail extends AppCompatActivity {
                            "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&answer="+ans4+"\">"+ans4+"</a>");
 
                     /*
-                        bodyMail = "Hello, you have been asked a question" + "\n"
-                                + "~~~~~~" + que + "~~~~~~~~" + "\n"
-                                + "please touch the suitable link according to your answer" + "\n" + "\n" + "\n" +
-                                ans1 + "-----" + "this would be replaced by link" + "\n" +
-                                ans2 + "-----" + "this would be replaced by link" + "\n" +
-                                ans3 + "-----" + "this would be replaced by link" + "\n" +
-                                ans4 + "-----" + "this would be replaced by link" + "\n" + "\n" + "\n" + "\n" +
-                                "thank you";
+
 */
-                    sender.sendMail("Question From AskSomething", bodyMail, "asksomethingsystem@gmail.com", "galpeer2@gmail.com");
+
+                    sender.sendMail("Question From AskSomething from "+ user.getName(), bodyMail, "asksomethingsystem@gmail.com", mailAddress);
+
 
                     int j = 6;
 
