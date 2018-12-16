@@ -34,8 +34,6 @@ import java.util.List;
 public class SendMail extends AppCompatActivity {
     ArrayList<String> MyAddresses;
     User user;
-    TextView tv;
-    String ans1, ans2, ans3, ans4, que;
     Question questionToUpload;
     StateMgr theStateMgr;
     AsklSomeThingState asklSomeThingState;
@@ -48,7 +46,6 @@ public class SendMail extends AppCompatActivity {
         asklSomeThingState= theStateMgr.LoadState();
         user=asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName());
         MyAddresses=user.getMyEmailAddresses();
-        que="";
         MyAddresses.add("galpeer2@gmail.com");
         SendTestEmail(null);
 

@@ -171,7 +171,7 @@ public class Listen2MailResultsService extends IntentService {
                                 "   <meta charset=\"utf-8\" /> \r\n" +
                                 "</head> \r\n " +
                                 "<body> \r\n" +
-                                "  <h1>You have allready voted "+theanswer+"</h1> \r\n" +
+                                "  <h1>You have allready voted "+"</h1> \r\n" +
                                 "</body> \r\n" +
                                 "</html>";
 
