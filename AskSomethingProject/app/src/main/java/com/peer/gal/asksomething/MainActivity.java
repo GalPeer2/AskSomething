@@ -13,16 +13,27 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
 import com.peer.gal.asksomething.State.AsklSomeThingState;
 import  com.peer.gal.asksomething.State.StateMgr;
 
 public class MainActivity extends AppCompatActivity {
 
+    TextView theHelloMeg;
+    User user;
+    StateMgr theStateMgr;
+    AsklSomeThingState asklSomeThingState;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        theHelloMeg=(TextView)findViewById(R.id.theTitle);
+        theStateMgr = new StateMgr (this );
+        asklSomeThingState= theStateMgr.LoadState();
+        user=asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName());
+        theHelloMeg.setText("Welcome "+user.getName());
 
 
         /*

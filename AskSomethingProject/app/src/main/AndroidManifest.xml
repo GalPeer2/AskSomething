@@ -31,7 +31,9 @@
 
         <service
             android:name=".Listen2MailResultsService"
-            android:exported="false"></service>
+            android:exported="false" />
+
+        <activity android:name=".ShowAddresses"></activity>
     </application>
 
 </manifest>

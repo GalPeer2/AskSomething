@@ -1,6 +1,7 @@
 package com.peer.gal.asksomething;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,12 +20,14 @@ public class Login extends AppCompatActivity {
     TextView error;
     EditText nameet, passwordet;
     Button enter,loginORregister;
+    TextView title;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        startActivity(new Intent(Login.this,ShowAddresses.class));
         theStateMgr = new StateMgr(this);
         asklSomeThingState =new AsklSomeThingState();
         asklSomeThingState = theStateMgr.LoadState();
@@ -32,7 +35,9 @@ public class Login extends AppCompatActivity {
         passwordet = (EditText) findViewById(R.id.passwordET);
         error = (TextView) findViewById(R.id.errorET);
         enter=(Button) findViewById(R.id.buttonStart);
+        enter.setBackgroundColor(Color.MAGENTA);
         loginORregister=(Button)findViewById(R.id.buttonRegister);
+        title=(TextView)findViewById(R.id.theTitle);
     }
 
     public void logIn2(View view)
@@ -87,15 +92,21 @@ public class Login extends AppCompatActivity {
             nameet.setText("enter a name for user name");
             passwordet.setText("enter a password");
             enter.setText("sign up");
+            enter.setBackgroundColor(Color.RED);
+            title.setText("please sign up:");
             error.setText("");
             loginORregister.setText("Log In");
+            loginORregister.setBackgroundColor(Color.MAGENTA);
             return;
         }
         nameet.setText("USER NAME");
         passwordet.setText("PASSWORD");
         enter.setText("LOG IN");
+        enter.setBackgroundColor(Color.MAGENTA);
+        title.setText("please log in:");
         error.setText("");
         loginORregister.setText("REGISTER");
+        loginORregister.setBackgroundColor(Color.RED);
 
 
     }

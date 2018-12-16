@@ -28,6 +28,13 @@
             android:layout_height="31dp"
             android:layout_weight="0.10" />
 
+        <TextView
+            android:id="@+id/welET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.10"
+            android:text="welcome" />
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
