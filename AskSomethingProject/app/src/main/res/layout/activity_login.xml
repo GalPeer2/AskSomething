@@ -28,9 +28,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.11"
-            android:textSize="25dp"
+            android:text="Please log in or register"
             android:textColor="#08dee9"
-            android:text="Please log in" />
+            android:textSize="25dp" />
 
         <EditText
             android:id="@+id/nameET"
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.11"
             android:onClick="logIn2"
-            android:text="LET'S START" />
+            android:text="LOG IN" />
 
         <TextView
             android:id="@+id/errorET"
@@ -91,6 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#fD0000"
+                android:onClick="changeToSignUp"
                 android:text="REGISTER" />
 
 
