@@ -147,58 +147,78 @@ public class Listen2MailResultsService extends IntentService {
 
                 String thequestion = questionlist.get(0);
                 Question questionDealed = getQuestionBytext(user.getMyHistoryQuestions(),thequestion);
-                boolean shakran=containStringIn4Lists(questionDealed.getVotersForAns1(),questionDealed.getVotersForAns2()
-                        ,questionDealed.getVotersForAns3(),questionDealed.getVotersForAns4(),theNameOfTheUser);
-                String theThankAswere =
+
+                String questionDeletedMeg =
 
                         "<!DOCTYPE html> \r\n" +
                                 "<html>  \r\n " +
                                 "<head> \r\n" +
-                                "   <title>Thank you </title> \r\n " +
+                                "   <title>Error</title> \r\n " +
                                 "   <meta charset=\"utf-8\" /> \r\n" +
                                 "</head> \r\n " +
                                 "<body> \r\n" +
 
-                                "  <h1>Thank you for voting " + theanswer +"</h1> \r\n" +
+                                "  <h1>Sorry, "+ user.getName()+"has deleted the question"+"</h1> \r\n" +
 
                                 "</body> \r\n" +
                                 "</html>";
-                String allreadyVoted =
-                        "<!DOCTYPE html> \r\n" +
-                                "<html>  \r\n " +
-                                "<head> \r\n" +
-                                "   <title>Thank you </title> \r\n " +
-                                "   <meta charset=\"utf-8\" /> \r\n" +
-                                "</head> \r\n " +
-                                "<body> \r\n" +
-                                "  <h1>You have allready voted "+"</h1> \r\n" +
-                                "</body> \r\n" +
-                                "</html>";
 
-                if (shakran==true)
-                    response.send(allreadyVoted  );
+                if (questionDealed==null)
+                    response.send(questionDeletedMeg);
                 else {
-                    response.send(theThankAswere  );
-                    switch (theanswer) {
-                        case ("ans1"): {
-                            questionDealed.getVotersForAns1().add(theNameOfTheUser);
-                            break;
-                        }
-                        case ("ans2"): {
-                            questionDealed.getVotersForAns2().add(theNameOfTheUser);
-                            break;
-                        }
-                        case ("ans3"): {
-                            questionDealed.getVotersForAns3().add(theNameOfTheUser);
-                            break;
-                        }
-                        case ("ans4"): {
-                            questionDealed.getVotersForAns4().add(theNameOfTheUser);
-                            break;
+                    boolean shakran = containStringIn4Lists(questionDealed.getVotersForAns1(), questionDealed.getVotersForAns2()
+                            , questionDealed.getVotersForAns3(), questionDealed.getVotersForAns4(), theNameOfTheUser);
+                    String theThankAswere =
+
+                            "<!DOCTYPE html> \r\n" +
+                                    "<html>  \r\n " +
+                                    "<head> \r\n" +
+                                    "   <title>Thank you </title> \r\n " +
+                                    "   <meta charset=\"utf-8\" /> \r\n" +
+                                    "</head> \r\n " +
+                                    "<body> \r\n" +
+
+                                    "  <h1>Thank you for voting " + theanswer + "</h1> \r\n" +
+
+                                    "</body> \r\n" +
+                                    "</html>";
+                    String allreadyVoted =
+                            "<!DOCTYPE html> \r\n" +
+                                    "<html>  \r\n " +
+                                    "<head> \r\n" +
+                                    "   <title>cheate trying!!! </title> \r\n " +
+                                    "   <meta charset=\"utf-8\" /> \r\n" +
+                                    "</head> \r\n " +
+                                    "<body> \r\n" +
+                                    "  <h1>You have allready voted " + "</h1> \r\n" +
+                                    "</body> \r\n" +
+                                    "</html>";
+
+                    if (shakran == true)
+                        response.send(allreadyVoted);
+                    else {
+                        response.send(theThankAswere);
+                        switch (theanswer) {
+                            case ("ans1"): {
+                                questionDealed.getVotersForAns1().add(theNameOfTheUser);
+                                break;
+                            }
+                            case ("ans2"): {
+                                questionDealed.getVotersForAns2().add(theNameOfTheUser);
+                                break;
+                            }
+                            case ("ans3"): {
+                                questionDealed.getVotersForAns3().add(theNameOfTheUser);
+                                break;
+                            }
+                            case ("ans4"): {
+                                questionDealed.getVotersForAns4().add(theNameOfTheUser);
+                                break;
+                            }
                         }
                     }
+                    mStateMgr.SaveState(asklSomeThingState);
                 }
-                mStateMgr.SaveState(asklSomeThingState);
 
 
             }
@@ -217,7 +237,7 @@ public class Listen2MailResultsService extends IntentService {
             if (question.getQue().equals(theQuestionText))
                 return question;
         }
-        return new Question("r","r","r","r","r");
+        return null;//case not found question
     }
 
     public boolean containStringIn4Lists(ArrayList<String>a,ArrayList<String>b,ArrayList<String>c,ArrayList<String>d, String string)
