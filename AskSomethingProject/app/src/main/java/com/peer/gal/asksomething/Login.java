@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.peer.gal.asksomething.R;
 import com.peer.gal.asksomething.State.AsklSomeThingState;
@@ -17,7 +18,6 @@ public class Login extends AppCompatActivity {
 
     StateMgr theStateMgr;
     AsklSomeThingState asklSomeThingState;
-    TextView error;
     EditText nameet, passwordet;
     Button enter,loginORregister;
     TextView title;
@@ -28,12 +28,12 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         startActivity(new Intent(Login.this,ShowAddresses.class));
+
         theStateMgr = new StateMgr(this);
-        asklSomeThingState =new AsklSomeThingState();
         asklSomeThingState = theStateMgr.LoadState();
+
         nameet = (EditText) findViewById(R.id.nameET);
         passwordet = (EditText) findViewById(R.id.passwordET);
-        error = (TextView) findViewById(R.id.errorET);
         enter=(Button) findViewById(R.id.buttonStart);
         enter.setBackgroundColor(Color.MAGENTA);
         loginORregister=(Button)findViewById(R.id.buttonRegister);
@@ -45,7 +45,7 @@ public class Login extends AppCompatActivity {
         //log in
         if (enter.getText().equals("LOG IN")) {
             if (asklSomeThingState == null) {
-                error.setText("error,try again or register");
+                Toast.makeText(Login.this,"You should register first",Toast.LENGTH_SHORT).show();
                 return;
             }
             String name = nameet.getText().toString();
@@ -55,10 +55,10 @@ public class Login extends AppCompatActivity {
                     asklSomeThingState.setUserName(name);
                     theStateMgr.SaveState(asklSomeThingState);
                     startActivity(new Intent(Login.this, MainActivity.class));
-                } else
-                    error.setText("error,try again or register");
+                }
             }
-            error.setText("error,try again or register");
+            else
+            Toast.makeText(Login.this,"Wrong password or user name",Toast.LENGTH_SHORT).show();
             return;
         }
         //first register
@@ -73,7 +73,7 @@ public class Login extends AppCompatActivity {
         }
         // name allredy used
         if (asklSomeThingState.getDictionary().containsKey(nameet.getText().toString())) {
-            error.setText("user name is allready used ! choose anoter one");
+            Toast.makeText(Login.this,"user name is allready used!!!",Toast.LENGTH_SHORT).show();
             return;
         }
         //no user name in dictinary
@@ -94,7 +94,6 @@ public class Login extends AppCompatActivity {
             enter.setText("sign up");
             enter.setBackgroundColor(Color.RED);
             title.setText("please sign up:");
-            error.setText("");
             loginORregister.setText("Log In");
             loginORregister.setBackgroundColor(Color.MAGENTA);
             return;
@@ -104,7 +103,6 @@ public class Login extends AppCompatActivity {
         enter.setText("LOG IN");
         enter.setBackgroundColor(Color.MAGENTA);
         title.setText("please log in:");
-        error.setText("");
         loginORregister.setText("REGISTER");
         loginORregister.setBackgroundColor(Color.RED);
 
