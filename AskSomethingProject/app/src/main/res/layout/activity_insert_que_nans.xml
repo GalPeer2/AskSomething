@@ -6,9 +6,10 @@
     android:background="@drawable/simansheela"
     android:layout_height="match_parent"
     tools:context="com.peer.gal.asksomething.InsertQueNAns">
+
     <LinearLayout
-        android:layout_width="363dp"
-        android:layout_height="377dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
@@ -17,7 +18,7 @@
             android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="please enter your question, then give 4 opptional answers."
+            android:text="Please enter your question, then give 4 opptional answers."
             android:textSize="24sp" />
 
         <EditText
@@ -108,25 +109,34 @@
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:text="Answer4" />
+
             </LinearLayout>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="121dp"
+                android:layout_height="110dp"
+                android:src="@drawable/clickhere"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="334dp" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="96dp"
+                android:layout_height="146dp"
+                android:onClick="takeData"
+                android:src="@drawable/sendlogo"
+                tools:layout_editor_absoluteX="98dp"
+                tools:layout_editor_absoluteY="385dp" />
+        </LinearLayout>
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="157dp"
-        android:layout_height="120dp"
-        android:src="@drawable/sendlogo"
-        android:onClick="takeData"
-        tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="385dp" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="124dp"
-        android:layout_height="189dp"
-        android:src="@drawable/clickhere"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="334dp" />
 
 </android.support.constraint.ConstraintLayout>

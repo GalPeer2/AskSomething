@@ -14,6 +14,8 @@ import com.peer.gal.asksomething.R;
 import com.peer.gal.asksomething.State.AsklSomeThingState;
 import com.peer.gal.asksomething.State.StateMgr;
 
+import java.util.ArrayList;
+
 public class Login extends AppCompatActivity {
 
     StateMgr theStateMgr;
@@ -27,7 +29,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        startActivity(new Intent(Login.this,ShowAddresses.class));
+
 
         theStateMgr = new StateMgr(this);
         asklSomeThingState = theStateMgr.LoadState();
@@ -38,6 +40,18 @@ public class Login extends AppCompatActivity {
         enter.setBackgroundColor(Color.MAGENTA);
         loginORregister=(Button)findViewById(R.id.buttonRegister);
         title=(TextView)findViewById(R.id.theTitle);
+
+        //example
+       /* Question a =new Question("the que ?","a","b","c","d");
+        ArrayList<String> s = new ArrayList<String>();
+        s.add("str1");
+        s.add("str hello");
+        s.add("str bye");
+        a.setVotersForAns1(new ArrayList<String>(s));
+        asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName()).getMyHistoryQuestions().add(a);
+        */
+
+        startActivity(new Intent(Login.this,PracticePieChart.class));
     }
 
     public void logIn2(View view)

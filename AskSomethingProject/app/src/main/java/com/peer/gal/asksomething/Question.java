@@ -12,6 +12,7 @@ class Question {
     String que,ans1,ans2,ans3,ans4;
     ArrayList<String> votersForAns1,votersForAns2,votersForAns3,votersForAns4;
 
+
     public String getQue() {
         return que;
     }
@@ -91,5 +92,9 @@ class Question {
         this.ans2 = ans2;
         this.ans3 = ans3;
         this.ans4 = ans4;
+        votersForAns1=new ArrayList<String>();
+        votersForAns2=new ArrayList<String>();
+        votersForAns3=new ArrayList<String>();
+        votersForAns4=new ArrayList<String>();
     }
 }
