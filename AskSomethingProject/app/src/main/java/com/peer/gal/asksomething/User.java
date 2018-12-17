@@ -10,12 +10,8 @@ import java.util.List;
 
 public class User {
     String name,password;
-    ArrayList<String> myEmailAddresses;
-    ArrayList<Question> myHistoryQuestions;
-
-
-
-
+    ArrayList<String> myEmailAddresses = new  ArrayList<String>();
+    ArrayList<Question> myHistoryQuestions = new ArrayList<Question>();
 
     public User()
     {
