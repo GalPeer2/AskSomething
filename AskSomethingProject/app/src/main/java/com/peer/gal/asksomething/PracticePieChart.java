@@ -104,7 +104,10 @@ public class PracticePieChart extends AppCompatActivity {
         pieChartView.setOnValueTouchListener(new PieChartOnValueSelectListener() {
             @Override
             public void onValueSelected(int arcIndex, SliceValue value) {
-                Toast.makeText(getActivity(), String.valueOf(value.getLabelAsChars()), Toast.LENGTH_SHORT).show();
+
+
+
+                Toast.makeText(PracticePieChart.this , String.valueOf(value.getLabelAsChars()), Toast.LENGTH_SHORT).show();
             }
 
             @Override

@@ -85,6 +85,14 @@ class Question {
         this.votersForAns4 = votersForAns4;
     }
 
+    public Question ()
+    {
+        votersForAns1=new ArrayList<String>();
+        votersForAns2=new ArrayList<String>();
+        votersForAns3=new ArrayList<String>();
+        votersForAns4=new ArrayList<String>();
+    }
+
     public Question(String que, String ans1, String ans2, String ans3, String ans4) {
 
         this.que = que;
