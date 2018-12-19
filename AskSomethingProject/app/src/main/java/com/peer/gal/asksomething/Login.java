@@ -30,8 +30,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         theStateMgr = new StateMgr(this);
+
         asklSomeThingState = theStateMgr.LoadState();
 
         nameet = (EditText) findViewById(R.id.nameET);
@@ -51,7 +51,7 @@ public class Login extends AppCompatActivity {
         asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName()).getMyHistoryQuestions().add(a);
         */
 
-      startActivity(new Intent(Login.this,PracticePieChart.class));
+     startActivity(new Intent(Login.this,PracticePieChart.class));
     }
 
     public void logIn2(View view)

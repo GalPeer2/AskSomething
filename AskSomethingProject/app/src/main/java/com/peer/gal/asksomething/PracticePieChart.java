@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -33,6 +35,7 @@ public class PracticePieChart extends AppCompatActivity {
     Question theQuestionDealed;
     PieChartView pieChartView;
     LinearLayout linearLayout;
+    ImageView swipe;
     int thePlace;
 
     @Override
@@ -43,10 +46,28 @@ public class PracticePieChart extends AppCompatActivity {
 
         pieChartView = (PieChartView) findViewById(R.id.chart);
         linearLayout=(LinearLayout)findViewById(R.id.theBigLayout) ;
+        swipe=(ImageView) findViewById(R.id.swipe) ;
 
         theStateMgr = new StateMgr(this);
         asklSomeThingState = theStateMgr.LoadState();
         user = asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName());
+/*
+        theQuestionDealed=  new Question("secque","a","b","c","d");
+        ArrayList<String> s = new ArrayList<String>();
+        s.add("str1");
+        s.add("str hello");
+        s.add("str bye");
+        theQuestionDealed.setVotersForAns1(s);
+        ArrayList<String> s2 =new ArrayList<>();
+        s2.add("fgf");
+        theQuestionDealed.setVotersForAns2(s2);
+        theQuestionDealed.setVotersForAns3(s);
+
+        user.getMyHistoryQuestions().add(theQuestionDealed);
+        theStateMgr.SaveState(asklSomeThingState);
+        */
+user.getMyHistoryQuestions().add(new Question("theq3","ff","22","333","444"));
+
 
         if (user.getMyHistoryQuestions().size() == 0) {
             Toast.makeText(PracticePieChart.this, "you dont have questions to show", Toast.LENGTH_SHORT).show();
@@ -61,7 +82,9 @@ public class PracticePieChart extends AppCompatActivity {
         }
 
 
+
         theQuestionDealed = user.getMyHistoryQuestions().get(thePlace);
+
         LoadQuestion(theQuestionDealed);
 
         //exampleQuestion
@@ -78,19 +101,23 @@ public class PracticePieChart extends AppCompatActivity {
 
 
 
+
         linearLayout.setOnTouchListener(new OnSwipeTouchListener(this) {
 
             public void onSwipeRight() {
                 if (thePlace==0)
-                    return;
+                { Toast.makeText(PracticePieChart.this, "first!", Toast.LENGTH_SHORT).show(); return;}
                 thePlace--;
-                LoadQuestion(user.getMyHistoryQuestions().get(thePlace));
+                LoadQuestion(user.getMyHistoryQuestions().get(thePlace));////////////////////////////
 
 
             }
             public void onSwipeLeft() {
+
                 if (thePlace==user.getMyHistoryQuestions().size()-1)
-                    return;
+                {
+                    Toast.makeText(PracticePieChart.this, "last!", Toast.LENGTH_SHORT).show();return;
+                }
                 thePlace++;
                 LoadQuestion(user.getMyHistoryQuestions().get(thePlace));
             }
@@ -104,10 +131,22 @@ public class PracticePieChart extends AppCompatActivity {
         pieChartView.setOnValueTouchListener(new PieChartOnValueSelectListener() {
             @Override
             public void onValueSelected(int arcIndex, SliceValue value) {
-
-
-
-                Toast.makeText(PracticePieChart.this , String.valueOf(value.getLabelAsChars()), Toast.LENGTH_SHORT).show();
+                if (String.valueOf(value.getLabelAsChars()).equals("no voters"))
+                { Toast.makeText(PracticePieChart.this , String.valueOf(value.getLabelAsChars())+ " yet", Toast.LENGTH_SHORT).show();return;}
+                Intent a =new Intent(PracticePieChart.this,ShowVoters.class);
+                switch (value.getColor())
+                {
+                    case (Color.BLUE):
+                    {a.putExtra("answerIndex",1);break;}
+                    case (Color.GRAY):
+                    {a.putExtra("answerIndex",2);break;}
+                    case (Color.RED):
+                    {a.putExtra("answerIndex",3);break;}
+                    case (Color.GREEN):
+                    {a.putExtra("answerIndex",4);break;}
+                }
+                a.putExtra("thePlace",thePlace);
+                startActivity(a);
             }
 
             @Override
@@ -193,6 +232,8 @@ public class PracticePieChart extends AppCompatActivity {
             pieData.add(new SliceValue((v3 * 100) / (v1 + v2 + v3 + v4), Color.RED).setLabel(theQuestionDealed.getAns3() + " : " + v3 + " voters"));
         if (v4 != 0)
             pieData.add(new SliceValue((v4 * 100) / (v1 + v2 + v3 + v4), Color.GREEN).setLabel(theQuestionDealed.getAns4() + " : " + v4 + " voters"));
+        if ((v1+v2+v3+v4)==0)
+            pieData.add(new SliceValue(100,Color.BLACK).setLabel("no voters"));
 
 
         PieChartData pieChartData = new PieChartData(pieData);
@@ -202,7 +243,7 @@ public class PracticePieChart extends AppCompatActivity {
         pieChartData.setHasLabels(true).setValueLabelTextSize(14);
 
         pieChartData.setHasCenterCircle(true).setCenterText1(theQuestionDealed.getQue());
-        pieChartData.setCenterText1FontSize(12).setCenterCircleScale(200);// size of the middle
+        pieChartData.setCenterText1FontSize(18);
 
         pieChartView.setPieChartData(pieChartData);
 

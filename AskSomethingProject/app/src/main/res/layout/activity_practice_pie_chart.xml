@@ -15,23 +15,16 @@
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/swipe"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/imageButton3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@android:drawable/ic_media_play" />
-        </LinearLayout>
+            android:layout_height="60dp"
+            android:src="@drawable/swipeme" />
 
         <lecho.lib.hellocharts.view.PieChartView
             android:id="@+id/chart"
             android:layout_width="368dp"
-            android:layout_height="495dp"
+            android:layout_height="367dp"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="8dp" />
 
