@@ -51,11 +51,13 @@ public class Login extends AppCompatActivity {
         asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName()).getMyHistoryQuestions().add(a);
         */
 
-        startActivity(new Intent(Login.this,PracticePieChart.class));
+      startActivity(new Intent(Login.this,PracticePieChart.class));
     }
 
     public void logIn2(View view)
     {
+
+        Intent toMainActivity=new Intent(Login.this,PracticePieChart.class);
         //log in
         if (enter.getText().equals("LOG IN")) {
             if (asklSomeThingState == null) {
@@ -68,8 +70,10 @@ public class Login extends AppCompatActivity {
                 if (asklSomeThingState.getDictionary().get(name).getPassword().equals(password)) {
                     asklSomeThingState.setUserName(name);
                     theStateMgr.SaveState(asklSomeThingState);
-                    startActivity(new Intent(Login.this, MainActivity.class));
+                    startActivity(toMainActivity);
                 }
+                else
+                Toast.makeText(Login.this,"Wrong password or user name",Toast.LENGTH_SHORT).show();
             }
             else
             Toast.makeText(Login.this,"Wrong password or user name",Toast.LENGTH_SHORT).show();
@@ -82,7 +86,7 @@ public class Login extends AppCompatActivity {
             asklSomeThingState.getDictionary().put(nameet.getText().toString(), user);
             asklSomeThingState.setUserName(nameet.getText().toString());
             theStateMgr.SaveState(asklSomeThingState);
-            startActivity(new Intent(Login.this, MainActivity.class));
+            startActivity(toMainActivity);
             return;
         }
         // name allredy used
@@ -95,7 +99,7 @@ public class Login extends AppCompatActivity {
         asklSomeThingState.getDictionary().put(nameet.getText().toString(), user);
         asklSomeThingState.setUserName(nameet.getText().toString());
         theStateMgr.SaveState(asklSomeThingState);
-        startActivity(new Intent(Login.this, MainActivity.class));
+        startActivity(toMainActivity);
 
     }
 

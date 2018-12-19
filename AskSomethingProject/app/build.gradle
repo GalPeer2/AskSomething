@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
+    compileSdkVersion 24
     buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "com.peer.gal.asksomething"
@@ -20,12 +20,9 @@ android {
 }
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
-
     //Pay attention to the jars location gal kapara sim lev shecoolam beota folder
     compile files('C:/new18122018/AskSomething/AskSomethingProject/Libs/activation.jar')
     compile files('C:/new18122018/AskSomething/AskSomethingProject/Libs/additionnal.jar')
@@ -38,5 +35,4 @@ dependencies {
     compile 'com.android.support:design:22.2.1'
     compile 'com.koushikdutta.async:androidasync:2.+'
     testCompile 'junit:junit:4.12'
-
 }

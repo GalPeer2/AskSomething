@@ -33,7 +33,8 @@
             android:name=".Listen2MailResultsService"
             android:exported="false" />
 
-        <activity android:name=".ShowAddresses"></activity>
+        <activity android:name=".ShowAddresses" />
+        <activity android:name=".toErase"></activity>
     </application>
 
 </manifest>
