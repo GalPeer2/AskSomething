@@ -37,7 +37,7 @@ public class ShowVoters extends AppCompatActivity {
         ansTV=(TextView)findViewById(R.id.ansTV);
         votersLV=(ListView)findViewById(R.id.votersLV);
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//getting data
+//getting data and put in tv
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
 
@@ -47,10 +47,12 @@ public class ShowVoters extends AppCompatActivity {
 
         queTV.setText(user.getMyHistoryQuestions().get(thePlace).getQue());
         String ans = user.getMyHistoryQuestions().get(thePlace).getAnsByIndex(answerIndex);
-        ansTV.setText("Those voted ~~~"+ans);
+        int numVotes=user.getMyHistoryQuestions().get(thePlace).getVotersForAnsByIndex(answerIndex).size();
+        ansTV.setText( numVotes+" people voted ''"+ans+"''");
+     
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         //showList
-        items =user.getMyHistoryQuestions().get(answerIndex).getVotersForAnsByIndex(answerIndex);
+        items =user.getMyHistoryQuestions().get(thePlace).getVotersForAnsByIndex(answerIndex);
 
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,items);
         votersLV.setAdapter(adapter);
