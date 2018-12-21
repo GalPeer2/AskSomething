@@ -35,7 +35,7 @@ public class PracticePieChart extends AppCompatActivity {
     Question theQuestionDealed;
     PieChartView pieChartView;
     LinearLayout linearLayout;
-    ImageView swipe;
+    ImageView swipeImV;
     int thePlace;
 
     @Override
@@ -46,7 +46,7 @@ public class PracticePieChart extends AppCompatActivity {
 
         pieChartView = (PieChartView) findViewById(R.id.chart);
         linearLayout=(LinearLayout)findViewById(R.id.theBigLayout) ;
-        swipe=(ImageView) findViewById(R.id.swipe) ;
+        swipeImV=(ImageView) findViewById(R.id.swipe) ;
 
         theStateMgr = new StateMgr(this);
         asklSomeThingState = theStateMgr.LoadState();
@@ -137,15 +137,16 @@ user.getMyHistoryQuestions().add(new Question("theq3","ff","22","333","444"));
                 switch (value.getColor())
                 {
                     case (Color.BLUE):
-                    {a.putExtra("answerIndex",1);break;}
+                    {a.putExtra("answerIndex","1");break;}
                     case (Color.GRAY):
-                    {a.putExtra("answerIndex",2);break;}
+                    {a.putExtra("answerIndex","2");break;}
                     case (Color.RED):
-                    {a.putExtra("answerIndex",3);break;}
+                    {a.putExtra("answerIndex","3");break;}
                     case (Color.GREEN):
-                    {a.putExtra("answerIndex",4);break;}
+                    {a.putExtra("answerIndex","4");break;}
                 }
-                a.putExtra("thePlace",thePlace);
+
+                a.putExtra("thePlace",""+thePlace);
                 startActivity(a);
             }
 

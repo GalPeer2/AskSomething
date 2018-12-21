@@ -84,6 +84,39 @@ class Question {
     public void setVotersForAns4(ArrayList<String> votersForAns4) {
         this.votersForAns4 = votersForAns4;
     }
+    public ArrayList<String> getVotersForAnsByIndex(int indexAns) {
+        switch (indexAns)
+        {
+            case(1):
+            { return this.getVotersForAns1();}
+            case(2):
+            { return this.getVotersForAns2();}
+            case(3):
+            { return this.getVotersForAns3();}
+            case(4):
+            { return this.getVotersForAns4();}
+
+        }
+        ArrayList<String>arrayList=new ArrayList<String>();
+        arrayList.add("error");
+        return arrayList;
+    }
+    public String getAnsByIndex(int indexAns) {
+        switch (indexAns)
+        {
+            case(1):
+            { return this.getAns1();}
+            case(2):
+            { return this.getAns2();}
+            case(3):
+            { return this.getAns3();}
+            case(4):
+            { return this.getAns4();}
+
+        }
+
+        return "error";
+    }
 
     public Question ()
     {

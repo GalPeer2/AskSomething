@@ -28,8 +28,8 @@ public class InsertQueNAns extends AppCompatActivity {
 
         public void takeData(View view) {
             AlertDialog.Builder a = new AlertDialog.Builder(this);
-            a.setMessage("send this question?");
-            a.setPositiveButton("send", new DialogInterface.OnClickListener() {
+            a.setMessage("Send this question?");
+            a.setPositiveButton("Send", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     ans1 = ans1et.getText().toString();
@@ -48,7 +48,7 @@ public class InsertQueNAns extends AppCompatActivity {
 
                 }
             });
-            a.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+            a.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
 

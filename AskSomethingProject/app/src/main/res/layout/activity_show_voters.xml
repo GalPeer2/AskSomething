@@ -28,6 +28,7 @@
             android:text="TextView" />
 
         <ListView
+            android:id="@+id/votersLV"
             android:layout_width="match_parent"
             android:layout_height="395dp" />
 
@@ -35,6 +36,7 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="back"
             android:text="Back to question" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

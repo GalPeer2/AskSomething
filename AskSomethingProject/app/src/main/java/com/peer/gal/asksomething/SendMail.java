@@ -45,6 +45,7 @@ public class SendMail extends AppCompatActivity {
         theStateMgr = new StateMgr (this );
         asklSomeThingState= theStateMgr.LoadState();
         user=asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName());
+
         MyAddresses=user.getMyEmailAddresses();
         MyAddresses.add("galpeer2@gmail.com");
         SendTestEmail(null);
