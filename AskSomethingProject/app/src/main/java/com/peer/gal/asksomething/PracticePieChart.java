@@ -1,8 +1,10 @@
 package com.peer.gal.asksomething;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
@@ -45,8 +47,8 @@ public class PracticePieChart extends AppCompatActivity {
 
 
         pieChartView = (PieChartView) findViewById(R.id.chart);
-        linearLayout=(LinearLayout)findViewById(R.id.theBigLayout) ;
-        swipeImV=(ImageView) findViewById(R.id.swipe) ;
+        linearLayout = (LinearLayout) findViewById(R.id.theBigLayout);
+        swipeImV = (ImageView) findViewById(R.id.swipe);
 
         theStateMgr = new StateMgr(this);
         asklSomeThingState = theStateMgr.LoadState();
@@ -66,7 +68,7 @@ public class PracticePieChart extends AppCompatActivity {
         user.getMyHistoryQuestions().add(theQuestionDealed);
         theStateMgr.SaveState(asklSomeThingState);
         */
-user.getMyHistoryQuestions().add(new Question("theq3","ff","22","333","444"));
+        user.getMyHistoryQuestions().add(new Question("theq3", "ff", "22", "333", "444"));
 
 
         if (user.getMyHistoryQuestions().size() == 0) {
@@ -82,41 +84,31 @@ user.getMyHistoryQuestions().add(new Question("theq3","ff","22","333","444"));
         }
 
 
-
         theQuestionDealed = user.getMyHistoryQuestions().get(thePlace);
 
         LoadQuestion(theQuestionDealed);
 
-        //exampleQuestion
-   /*   theQuestionDealed=  new Question("????","a","b","c","d");
-        ArrayList<String> s = new ArrayList<String>();
-        s.add("str1");
-        s.add("str hello");
-        s.add("str bye");
-        theQuestionDealed.setVotersForAns1(s);
-        ArrayList<String> s2 =new ArrayList<>();
-        s2.add("fgf");
-        theQuestionDealed.setVotersForAns2(s2);
-        theQuestionDealed.setVotersForAns3(s2);*/
-
-
 
 
         linearLayout.setOnTouchListener(new OnSwipeTouchListener(this) {
+            //SLIDING
 
             public void onSwipeRight() {
-                if (thePlace==0)
-                { Toast.makeText(PracticePieChart.this, "first!", Toast.LENGTH_SHORT).show(); return;}
+                if (thePlace == 0) {
+                    Toast.makeText(PracticePieChart.this, "first!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 thePlace--;
                 LoadQuestion(user.getMyHistoryQuestions().get(thePlace));////////////////////////////
 
 
             }
+
             public void onSwipeLeft() {
 
-                if (thePlace==user.getMyHistoryQuestions().size()-1)
-                {
-                    Toast.makeText(PracticePieChart.this, "last!", Toast.LENGTH_SHORT).show();return;
+                if (thePlace == user.getMyHistoryQuestions().size() - 1) {
+                    Toast.makeText(PracticePieChart.this, "last!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 thePlace++;
                 LoadQuestion(user.getMyHistoryQuestions().get(thePlace));
@@ -129,24 +121,34 @@ user.getMyHistoryQuestions().add(new Question("theq3","ff","22","333","444"));
         });
 
         pieChartView.setOnValueTouchListener(new PieChartOnValueSelectListener() {
+            // choosing slice and move to ShowVOTERS
             @Override
             public void onValueSelected(int arcIndex, SliceValue value) {
-                if (String.valueOf(value.getLabelAsChars()).equals("no voters"))
-                { Toast.makeText(PracticePieChart.this , String.valueOf(value.getLabelAsChars())+ " yet", Toast.LENGTH_SHORT).show();return;}
-                Intent a =new Intent(PracticePieChart.this,ShowVoters.class);
-                switch (value.getColor())
-                {
-                    case (Color.BLUE):
-                    {a.putExtra("answerIndex","1");break;}
-                    case (Color.GRAY):
-                    {a.putExtra("answerIndex","2");break;}
-                    case (Color.RED):
-                    {a.putExtra("answerIndex","3");break;}
-                    case (Color.GREEN):
-                    {a.putExtra("answerIndex","4");break;}
+                if (String.valueOf(value.getLabelAsChars()).equals("no voters")) {
+                    Toast.makeText(PracticePieChart.this, String.valueOf(value.getLabelAsChars()) + " yet", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Intent a = new Intent(PracticePieChart.this, ShowVoters.class);
+                switch (value.getColor()) {
+                    case (Color.BLUE): {
+                        a.putExtra("answerIndex", "1");
+                        break;
+                    }
+                    case (Color.GRAY): {
+                        a.putExtra("answerIndex", "2");
+                        break;
+                    }
+                    case (Color.RED): {
+                        a.putExtra("answerIndex", "3");
+                        break;
+                    }
+                    case (Color.GREEN): {
+                        a.putExtra("answerIndex", "4");
+                        break;
+                    }
                 }
 
-                a.putExtra("thePlace",""+thePlace);
+                a.putExtra("thePlace", "" + thePlace);
                 startActivity(a);
             }
 
@@ -155,11 +157,12 @@ user.getMyHistoryQuestions().add(new Question("theq3","ff","22","333","444"));
 
             }
         });
+    }
 
 
 
 
-
+/*
         class OnSwipeTouchListener implements View.OnTouchListener {
 
             public final GestureDetector gestureDetector;
@@ -216,8 +219,11 @@ user.getMyHistoryQuestions().add(new Question("theq3","ff","22","333","444"));
         }
     }
 
+    */
+
     public void LoadQuestion(Question theQuestionDealed)
     {
+
         List<SliceValue> pieData = new ArrayList<>();
         int v1 = theQuestionDealed.getVotersForAns1().size();
         int v2 = theQuestionDealed.getVotersForAns2().size();
@@ -248,5 +254,40 @@ user.getMyHistoryQuestions().add(new Question("theq3","ff","22","333","444"));
 
         pieChartView.setPieChartData(pieChartData);
 
+    }
+
+    public void reLoadQuestion(View view)
+    {
+        asklSomeThingState = theStateMgr.LoadState();
+        user = asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName());
+        LoadQuestion(user.getMyHistoryQuestions().get(thePlace));
+    }
+    public void back(View v)
+    {
+        finish();
+    }
+    public void deleteQuestion (View view)
+    {
+        AlertDialog.Builder a = new AlertDialog.Builder(this);
+        a.setMessage("ATTENTION: by choosing ''Delete'' all data of this question would be earased and your contants wouldnt be able to answer it anymore."+"\n"
+                +"Are you sure you want to delete '' "+user.getMyHistoryQuestions().get(thePlace).getQue()+" '' ?");
+        a.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                user.getMyHistoryQuestions().remove(thePlace);
+                theStateMgr.SaveState(asklSomeThingState);
+                Toast.makeText(PracticePieChart.this, "Question deleted succesfully", Toast.LENGTH_SHORT).show();
+                finish();
+
+            }
+        });
+        a.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        AlertDialog alertDialog = a.create();
+        alertDialog.show();
     }
 }

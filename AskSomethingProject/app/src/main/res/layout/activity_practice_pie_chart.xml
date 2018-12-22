@@ -37,23 +37,25 @@
                 android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="back"
                 android:text="Back to list" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.40"
-                android:background="@android:color/holo_red_dark"
-                android:text="delete question"
-               />
 
             <Button
                 android:id="@+id/button4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="reLoadQuestion"
                 android:text="reload" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="84dp"
+                android:layout_height="34dp"
+                android:background="@android:color/holo_red_dark"
+                android:onClick="deleteQuestion"
+                android:text="delete question" />
+
         </LinearLayout>
 
     </LinearLayout>
