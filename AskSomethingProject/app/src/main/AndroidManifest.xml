@@ -35,7 +35,8 @@
 
         <activity android:name=".ShowAddresses" />
         <activity android:name=".toErase" />
-        <activity android:name=".ShowVoters"></activity>
+        <activity android:name=".ShowVoters" />
+        <activity android:name=".ShowQuestions"></activity>
     </application>
 
 </manifest>
