@@ -68,7 +68,6 @@ public class PracticePieChart extends AppCompatActivity {
         user.getMyHistoryQuestions().add(theQuestionDealed);
         theStateMgr.SaveState(asklSomeThingState);
         */
-        user.getMyHistoryQuestions().add(new Question("theq3", "ff", "22", "333", "444"));
 
 
         if (user.getMyHistoryQuestions().size() == 0) {
@@ -262,9 +261,9 @@ public class PracticePieChart extends AppCompatActivity {
         user = asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName());
         LoadQuestion(user.getMyHistoryQuestions().get(thePlace));
     }
-    public void back(View v)
+    public void backWithIntent(View v)
     {
-        finish();
+        startActivity(new Intent(PracticePieChart.this,ShowQuestions.class));
     }
     public void deleteQuestion (View view)
     {

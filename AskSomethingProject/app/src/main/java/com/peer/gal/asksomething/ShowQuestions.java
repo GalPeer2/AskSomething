@@ -1,9 +1,15 @@
 package com.peer.gal.asksomething;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.peer.gal.asksomething.State.AsklSomeThingState;
 import com.peer.gal.asksomething.State.StateMgr;
@@ -36,6 +42,16 @@ public class ShowQuestions extends AppCompatActivity {
 
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,items);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(ShowQuestions.this,PracticePieChart.class);
+                intent.putExtra("thePlace",""+position);
+                startActivity(intent);
+            }
+
+        });
 
     }
 }
