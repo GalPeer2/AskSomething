@@ -276,7 +276,12 @@ public class PracticePieChart extends AppCompatActivity {
                 user.getMyHistoryQuestions().remove(thePlace);
                 theStateMgr.SaveState(asklSomeThingState);
                 Toast.makeText(PracticePieChart.this, "Question deleted succesfully", Toast.LENGTH_SHORT).show();
-                finish();
+
+                if (thePlace==user.getMyHistoryQuestions().size())
+                    thePlace--;
+                if (thePlace == -1)
+                { backWithIntent(null);return;}
+                reLoadQuestion(null);
 
             }
         });
