@@ -21,6 +21,9 @@ public class User {
     public User(String name, String password) {
         this.name = name;
         this.password = password;
+        this.myEmailAddresses=new ArrayList<String>();
+        this.myHistoryQuestions=new ArrayList<Question>();
+        
         }
 
     public String getName() {

@@ -24,9 +24,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     //Pay attention to the jars location gal kapara sim lev shecoolam beota folder
-    compile files('F:/open19122018/AskSomething/AskSomethingProject/Libs/activation.jar')
-    compile files('F:/open19122018/AskSomething/AskSomethingProject/Libs/additionnal.jar')
-    compile files('F:/open19122018/AskSomething/AskSomethingProject/Libs/mail.jar')
+    compile files('C:/new23122018/AskSomething/AskSomethingProject/Libs/activation.jar')
+    compile files('C:/new23122018/AskSomething/AskSomethingProject/Libs/additionnal.jar')
+    compile files('C:/new23122018/AskSomething/AskSomethingProject/Libs/mail.jar')
     compile 'com.google.code.gson:gson:2.4'
     compile 'com.android.volley:volley:1.0.0'
     compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
