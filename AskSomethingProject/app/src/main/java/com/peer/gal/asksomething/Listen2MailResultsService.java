@@ -133,8 +133,6 @@ public class Listen2MailResultsService extends IntentService {
 
                 AsklSomeThingState asklSomeThingState = mStateMgr.LoadState ();
 
-                User user=asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName());
-
                 List<String> Sendfor2 = request.getQuery().get("Sendfor");
 
                 String theNameOfTheUser = Sendfor2.get(0);
@@ -146,6 +144,12 @@ public class Listen2MailResultsService extends IntentService {
                 List<String> questionlist = request.getQuery().get("question");
 
                 String thequestion = questionlist.get(0);
+
+                List<String> senderlist = request.getQuery().get("sendfrom");
+
+                String theSender = questionlist.get(0);
+               User user=asklSomeThingState.getDictionary().get(theSender);
+
                 Question questionDealed = getQuestionBytext(user.getMyHistoryQuestions(),thequestion);
 
                 String questionDeletedMeg =
@@ -178,7 +182,7 @@ public class Listen2MailResultsService extends IntentService {
                                     "</head> \r\n " +
                                     "<body> \r\n" +
 
-                                    "  <h1>Thank you for voting " + theanswer + "</h1> \r\n" +
+                                    "  <h1> "+user.getName()+" Thanks you for voting " + theanswer + "</h1> \r\n" +
 
                                     "</body> \r\n" +
                                     "</html>";
@@ -190,7 +194,7 @@ public class Listen2MailResultsService extends IntentService {
                                     "   <meta charset=\"utf-8\" /> \r\n" +
                                     "</head> \r\n " +
                                     "<body> \r\n" +
-                                    "  <h1>You have allready voted " + "</h1> \r\n" +
+                                    "  <h1>You have allready voted!! "+user.getName() +" wont recieve your second answer" + "</h1> \r\n" +
                                     "</body> \r\n" +
                                     "</html>";
 

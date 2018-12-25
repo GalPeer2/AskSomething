@@ -23,17 +23,13 @@
         android:weightSum="1">
 
         <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:layout_weight="0.10" />
-
-        <TextView
             android:id="@+id/welET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.10"
-            android:text="welcome" />
+            android:text="welcome"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="30sp" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -47,13 +43,6 @@
             android:layout_height="wrap_content"
             android:text="יוצרים סקרים ומקבלים תשובות"
             android:textColor="#1c80bf"
-            android:textSize="25dp" />
-
-        <TextView
-            android:id="@+id/Galpeer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="גל פאר"
             android:textSize="25dp" />
 
         <LinearLayout

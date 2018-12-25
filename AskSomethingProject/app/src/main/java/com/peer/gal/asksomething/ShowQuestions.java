@@ -34,7 +34,10 @@ public class ShowQuestions extends AppCompatActivity {
         user=asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName());
 
 
-      /*  user.getMyHistoryQuestions().add(new Question("what","2","3","4","pakaaa"));
+        /*
+
+
+        user.getMyHistoryQuestions().add(new Question("what","2","3","4","pakaaa"));
         user.getMyHistoryQuestions().add(new Question("what1","2","3","4","pakaaa"));
         user.getMyHistoryQuestions().add(new Question("what2","2","3","4","pakaaa"));
         user.getMyHistoryQuestions().add(new Question("what3","2","3","4","pakaaa"));
@@ -45,23 +48,29 @@ public class ShowQuestions extends AppCompatActivity {
         user.getMyHistoryQuestions().add(new Question("what8","2","3","4","pakaaa"));
         user.getMyHistoryQuestions().add(new Question("what9","2","3","4","pakaaa"));
         theStateMgr.SaveState(asklSomeThingState);
+
         */
+
 
 
         listView =(ListView)findViewById(R.id.listQueLV);
 
         items=new ArrayList<String>();
 
-        items.add("hi");
-        items.add("sh");
-     //   for (Question question:user.getMyHistoryQuestions())
+        for (Question question:user.getMyHistoryQuestions())
         {
-      //      items.add(question.getQue());
+            items.add(question.getQue());
         }
+
 
 
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,items);
         listView.setAdapter(adapter);
+
+        if (items.size()==0) {
+            Toast.makeText(ShowQuestions.this, "No Questions in history", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(ShowQuestions.this,MainActivity.class));
+        }
 
 
 

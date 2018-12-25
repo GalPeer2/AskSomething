@@ -51,13 +51,13 @@ public class Login extends AppCompatActivity {
         asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName()).getMyHistoryQuestions().add(a);
         */
 
-     startActivity(new Intent(Login.this,ShowQuestions.class));
+     startActivity(new Intent(Login.this,MainActivity.class));
     }
 
     public void logIn2(View view)
     {
 
-        Intent toMainActivity=new Intent(Login.this,PracticePieChart.class);
+        Intent toMainActivity=new Intent(Login.this,MainActivity.class);
         //log in
         if (enter.getText().equals("LOG IN")) {
             if (asklSomeThingState == null) {
