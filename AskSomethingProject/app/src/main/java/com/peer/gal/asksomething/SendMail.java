@@ -115,7 +115,7 @@ public class SendMail extends AppCompatActivity {
                 GMailSender sender = new GMailSender("galpeerschool@gmail.com","----");
                */
 //
-                    GMailSender sender = new GMailSender("asksomethingsystem@gmail.com", "");
+                    GMailSender sender = new GMailSender("asksomethingsystem@gmail.com", "android666");
 
                     // m.setBody(Html.fromHtml("<h1>Title</h1><br>Username "+ username +" and password"));
 
@@ -153,7 +153,7 @@ public class SendMail extends AppCompatActivity {
             if (question.getQue().equals(theQuestionText))
                 return question;
         }
-        return new Question("r","r","r","r","r");
+        return null;
     }
 
     public boolean containStringIn4Lists(ArrayList<String>a,ArrayList<String>b,ArrayList<String>c,ArrayList<String>d, String string)

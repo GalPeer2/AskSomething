@@ -94,6 +94,22 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this,InsertQueNAns.class));
 
     }
+    public void moveToYourChoice(View theImageClicked)
+    {
+        switch (theImageClicked.getId())
+        {
+            case (R.id.newQueIV):
+                { startActivity(new Intent(MainActivity.this,InsertQueNAns.class));break;}
+            case (R.id.historyIV):
+            { startActivity(new Intent(MainActivity.this,ShowQuestions.class));break;}
+            case (R.id.CONTACTSiv):
+            { startActivity(new Intent(MainActivity.this,ShowAddresses.class));break;}
+            case (R.id.LogoutIV):
+            { exit(null);break;}
+
+
+        }
+    }
 
 
 }
