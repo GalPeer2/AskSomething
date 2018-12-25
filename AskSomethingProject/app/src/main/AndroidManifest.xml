@@ -35,7 +35,8 @@
 
         <activity android:name=".ShowAddresses" />
         <activity android:name=".ShowVoters" />
-        <activity android:name=".ShowQuestions"></activity>
+        <activity android:name=".ShowQuestions" />
+        <activity android:name=".EnvelopeFlying"></activity>
     </application>
 
 </manifest>

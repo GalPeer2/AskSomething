@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.peer.gal.asksomething.R;
 import com.peer.gal.asksomething.State.AsklSomeThingState;
 import com.peer.gal.asksomething.State.StateMgr;
+import com.sun.mail.imap.protocol.ENVELOPE;
 
 import java.util.ArrayList;
 
@@ -51,7 +52,7 @@ public class Login extends AppCompatActivity {
         asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName()).getMyHistoryQuestions().add(a);
         */
 
-     startActivity(new Intent(Login.this,MainActivity.class));
+     startActivity(new Intent(Login.this,EnvelopeActivity.class));
     }
 
     public void logIn2(View view)

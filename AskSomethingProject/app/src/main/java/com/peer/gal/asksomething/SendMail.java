@@ -38,6 +38,7 @@ public class SendMail extends AppCompatActivity {
     StateMgr theStateMgr;
     AsklSomeThingState asklSomeThingState;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
