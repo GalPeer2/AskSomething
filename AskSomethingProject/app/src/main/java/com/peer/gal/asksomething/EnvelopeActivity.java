@@ -7,24 +7,26 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 /**
  * Created by Gal on 12/25/2018.
  */
 
-public class EnvelopeActivity extends Activity {
+public class EnvelopeActivity extends AppCompatActivity {
     Invelope invelope;
     InvelopeView invelopView;
     InvelopeMover invelopeMover;
 
-    public EnvelopeActivity()
-    {}
 
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_show_addresses);
+        /*
+
         invelope=new Invelope(this.getWindowManager().getDefaultDisplay().getWidth()
                 ,this.getWindowManager().getDefaultDisplay().getHeight());
         invelopView=new InvelopeView(this);
@@ -32,6 +34,7 @@ public class EnvelopeActivity extends Activity {
         setContentView(invelopView);
         invelopeMover=new InvelopeMover(invelope,invelopView);
         invelopeMover.start();
+        */
     }
 
 

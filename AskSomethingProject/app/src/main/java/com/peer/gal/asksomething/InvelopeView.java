@@ -22,12 +22,15 @@ public class InvelopeView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
+            int j =i+1;
+            if (j==5)j=0;
             canvas.drawLine(invelope.getPoints()[i].x, invelope.getPoints()[i].y
-                    , invelope.getPoints()[i + 1].x, invelope.getPoints()[i + 1].y, paint);
+                    , invelope.getPoints()[j].x, invelope.getPoints()[j].y, paint);
         }
         canvas.drawLine(invelope.getPoints()[1].x, invelope.getPoints()[1].y
                 , invelope.getPoints()[4].x, invelope.getPoints()[4].y, paint);
+
 
 
     }
@@ -35,7 +38,7 @@ public class InvelopeView extends View {
     public InvelopeView(Context context) {
         super(context);
         paint = new Paint();
-        paint.setStrokeWidth(3);
+        paint.setStrokeWidth(8);
         paint.setColor(Color.BLUE);
 
 

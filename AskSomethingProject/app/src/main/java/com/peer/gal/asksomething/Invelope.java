@@ -18,15 +18,15 @@ public class Invelope {
     {
         this.maxHeight=maxHeight;
         this.maxWidth=maxWidth;
-        points[0]=new Point(1/10*maxWidth,3/4*maxHeight);//7.5/10 the top
-        points[1]=new Point(1/5*maxWidth,8/10*maxHeight);  //left up
-        points[2]=new Point(1/5*maxWidth,9/10*maxHeight); // left down
-        points[3]=new Point(0,9/10*maxHeight);         //right down
-        points[4]=new Point(0,8/10*maxHeight);           //right up
+        points[0]=new Point(1*(maxWidth/10),3*(maxHeight/4));//7.5/10 the top
+        points[1]=new Point(1*(maxWidth/5),8*(maxHeight/10));  //left up
+        points[2]=new Point(1*(maxWidth/5),9*(maxHeight/10)); // left down
+        points[3]=new Point(0,9*(maxHeight/10));         //right down
+        points[4]=new Point(0,8*(maxHeight/10));           //right up
     }
     public void moveTheEnvelope()
     {
-        if (points[1].x<=3/5*maxWidth) {
+        if (points[1].x<=3*(maxWidth/5)) {
             for (Point point : points)
                 point.x++;
             return ;
