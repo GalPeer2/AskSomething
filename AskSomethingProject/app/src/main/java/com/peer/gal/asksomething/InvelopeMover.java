@@ -16,12 +16,12 @@ public class InvelopeMover extends Thread {
     @Override
     public void run() {
         super.run();
-        while (theInvelope.getPoints()[1].y > 1) {
+        while (theInvelope.getPoints()[2].y > -19) {
             this.theInvelope.moveTheEnvelope();
             this.invelopView.postInvalidate();
 
             try {
-                InvelopeMover.sleep(5);
+                InvelopeMover.sleep(15);
             } catch (InterruptedException e) {
                 e.printStackTrace();
 
