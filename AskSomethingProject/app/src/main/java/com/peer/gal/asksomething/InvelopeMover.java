@@ -20,8 +20,9 @@ public class InvelopeMover extends Thread {
             this.theInvelope.moveTheEnvelope();
             this.invelopView.postInvalidate();
 
+
             try {
-                InvelopeMover.sleep(15);
+                InvelopeMover.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
 
