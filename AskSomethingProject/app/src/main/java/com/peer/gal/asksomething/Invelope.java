@@ -23,11 +23,11 @@ public class Invelope {
     {
         this.maxHeight=maxHeight;
         this.maxWidth=maxWidth;
-        points[0]=new Point(2*(maxWidth/10),10*(maxHeight/20));//7.5/10 the top
-        points[1]=new Point(2*(maxWidth/5),(13*maxHeight)/20);  //left up
-        points[2]=new Point(2*(maxWidth/5),(17*maxHeight)/20); // left down
-        points[3]=new Point(0,(17*maxHeight)/20);         //right down
-        points[4]=new Point(0,(13*maxHeight)/20);           //right up
+        points[0]=new Point(-1*(maxWidth/5),10*(maxHeight/20));//7.5/10 the top
+        points[1]=new Point(0,(13*maxHeight)/20);  //left up
+        points[2]=new Point(0,(17*maxHeight)/20); // left down
+        points[3]=new Point(-2*(maxWidth/5),(17*maxHeight)/20);         //right down
+        points[4]=new Point(-2*(maxWidth/5),(13*maxHeight)/20);           //right up
         rectangle=new Rect((20*maxWidth)/20,(11*maxHeight)/40,(26*maxWidth)/20,(18*maxHeight)/40);
     }
 
