@@ -1,5 +1,6 @@
 package com.peer.gal.asksomething;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -48,7 +49,6 @@ public class SendMail extends AppCompatActivity {
         user=asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName());
 
         MyAddresses=user.getMyEmailAddresses();
-        MyAddresses.add("galpeer2@gmail.com");
         SendTestEmail(null);
 
         //StartHttpServer();
@@ -128,16 +128,9 @@ public class SendMail extends AppCompatActivity {
                             "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&question="+que+"&sendfrom="+user.getName()+"&answer="+ans3+"\">"+ans3+"</a>"+
                            "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&question="+que+"&sendfrom="+user.getName()+"&answer="+ans4+"\">"+ans4+"</a>");
 
-                    /*
 
-*/
+                    sender.sendMail("Question from "+ user.getName(), bodyMail, "asksomethingsystem@gmail.com", mailAddress);
 
-                    sender.sendMail("Question From AskSomething from "+ user.getName(), bodyMail, "asksomethingsystem@gmail.com", mailAddress);
-
-
-                    int j = 6;
-
-                    j = 9;
 
 
                 } catch (Exception e) {
@@ -145,6 +138,7 @@ public class SendMail extends AppCompatActivity {
                 }
 
             }
+            startActivity(new Intent(SendMail.this,InvelopeActivity.class));
         }
     }
     public Question getQuestionBytext(ArrayList<Question> questions,String theQuestionText)

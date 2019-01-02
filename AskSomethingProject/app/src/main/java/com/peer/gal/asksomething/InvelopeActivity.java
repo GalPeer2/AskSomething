@@ -23,18 +23,11 @@ public class InvelopeActivity extends AppCompatActivity {
         setContentView(invelopView);
         invelopeMover = new InvelopeMover(invelope, invelopView);
         invelopeMover.start();
-     //   new Thread(new MoveNextChecker(invelope)).start();
-        startTheCheckingForEnvelopeArrive();
-        //   startActivity(new Intent(InvelopeActivity.this,MainActivity.class));
     }
 
-        public void startTheCheckingForEnvelopeArrive() {
+        /*
 
-            new Thread(new MoveNextChecker(invelope)).start();
-
-        }
-
-        class MoveNextChecker implements Runnable {
+        class MoveNextChecker extends Thread{
             Invelope invelope;
             public MoveNextChecker(Invelope invelope)
             {
@@ -44,6 +37,13 @@ public class InvelopeActivity extends AppCompatActivity {
             public void run() {
                 while (true)
                 {
+                    try {
+                        MoveNextChecker.sleep(2);
+                    }
+                    catch (InterruptedException e) {
+                    e.printStackTrace();
+                    }
+
                     if (invelope.getPoints()[2].y<0) {
                         Toast.makeText(InvelopeActivity.this,"arrive end",Toast.LENGTH_SHORT).show();
                        startActivity(new Intent(InvelopeActivity.this, MainActivity.class));
@@ -53,9 +53,36 @@ public class InvelopeActivity extends AppCompatActivity {
 
             }
         }
+        */
 
 
+    class InvelopeMover extends Thread {
+        private Invelope theInvelope;
+        private InvelopeView invelopView;
+
+        public InvelopeMover(Invelope theInvelope, InvelopeView invelopView) {
+            this.theInvelope = theInvelope;
+            this.invelopView = invelopView;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            while (theInvelope.getPoints()[2].y > 0) {
+                this.theInvelope.moveTheEnvelope();
+                this.invelopView.postInvalidate();
 
 
+                try {
+                    InvelopeMover.sleep(5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+
+                }
+            }
+            startActivity(new Intent(InvelopeActivity.this,MainActivity.class));
+
+        }
     }
+}
 

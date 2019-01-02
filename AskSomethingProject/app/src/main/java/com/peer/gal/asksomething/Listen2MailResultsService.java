@@ -148,6 +148,11 @@ public class Listen2MailResultsService extends IntentService {
                 List<String> senderlist = request.getQuery().get("sendfrom");
 
                 String theSender = questionlist.get(0);
+                if (asklSomeThingState.getDictionary().containsKey(theSender)==false)
+                {
+                    response.send("error");
+                    return;
+                }
                User user=asklSomeThingState.getDictionary().get(theSender);
 
                 Question questionDealed = getQuestionBytext(user.getMyHistoryQuestions(),thequestion);
