@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.koushikdutta.async.http.server.AsyncHttpServer;
@@ -38,6 +39,8 @@ public class SendMail extends AppCompatActivity {
     Question questionToUpload;
     StateMgr theStateMgr;
     AsklSomeThingState asklSomeThingState;
+    TextView zeroz;
+    ImageView []imageViews;
 
 
     @Override
@@ -51,6 +54,19 @@ public class SendMail extends AppCompatActivity {
         MyAddresses=user.getMyEmailAddresses();
         SendTestEmail(null);
 
+        zeroz=(TextView)findViewById(R.id.pointstv);
+        imageViews=new ImageView[8];
+        imageViews[0]=(ImageView)findViewById(R.id.p1);
+        imageViews[1]=(ImageView)findViewById(R.id.p2);
+        imageViews[2]=(ImageView)findViewById(R.id.p3);
+        imageViews[3]=(ImageView)findViewById(R.id.p4);
+        imageViews[4]=(ImageView)findViewById(R.id.p5);
+        imageViews[5]=(ImageView)findViewById(R.id.p6);
+        imageViews[6]=(ImageView)findViewById(R.id.p7);
+        imageViews[7]=(ImageView)findViewById(R.id.p8);
+
+       StartChangingPoint();
+
         //StartHttpServer();
 
     }
@@ -58,6 +74,11 @@ public class SendMail extends AppCompatActivity {
     public void SendTestEmail(View v) {
 
         new Thread(new Task()).start();
+
+    }
+    public void StartChangingPoint() {
+
+    ///////////    new Thread(new PointsChanger()).start();
 
     }
 
@@ -141,6 +162,43 @@ public class SendMail extends AppCompatActivity {
             startActivity(new Intent(SendMail.this,InvelopeActivity.class));
         }
     }
+    /*class PointsChanger extends Thread
+    {
+        public PointsChanger()
+        {
+
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            int len;
+            while (true)
+            {
+                len=zeroz.getText().toString().length();
+                if (len>8)
+                {
+                    imageViews[len-8].setImageResource(R.drawable.bluepoint);
+                    zeroz.setText(zeroz.getText().toString()+"0");
+                    if (len==16)
+                        zeroz.setText("0");
+                }
+                else
+                {
+                    imageViews[len].setImageResource(R.drawable.redpoint);
+                    zeroz.setText(zeroz.getText().toString()+"0");
+                }
+                try {
+                    InvelopeActivity.InvelopeMover.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+
+                }
+
+            }
+
+        }
+    }*/
     public Question getQuestionBytext(ArrayList<Question> questions,String theQuestionText)
     {
         for (Question question : questions)
