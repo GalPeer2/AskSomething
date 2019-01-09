@@ -41,6 +41,7 @@ public class SendMail extends AppCompatActivity {
     AsklSomeThingState asklSomeThingState;
     TextView zeroz;
     ImageView []imageViews;
+    boolean hasfinished =false;
 
 
     @Override
@@ -52,7 +53,7 @@ public class SendMail extends AppCompatActivity {
         user=asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName());
 
         MyAddresses=user.getMyEmailAddresses();
-        SendTestEmail(null);
+      //  SendTestEmail(null);
 
         zeroz=(TextView)findViewById(R.id.pointstv);
         imageViews=new ImageView[8];
@@ -64,6 +65,9 @@ public class SendMail extends AppCompatActivity {
         imageViews[5]=(ImageView)findViewById(R.id.p6);
         imageViews[6]=(ImageView)findViewById(R.id.p7);
         imageViews[7]=(ImageView)findViewById(R.id.p8);
+
+        zeroz.setText("00");
+        zeroz.setText("0");
 
        StartChangingPoint();
 
@@ -77,8 +81,7 @@ public class SendMail extends AppCompatActivity {
 
     }
     public void StartChangingPoint() {
-
-    ///////////    new Thread(new PointsChanger()).start();
+       new Thread(new PointsChanger()).start();
 
     }
 
@@ -159,11 +162,14 @@ public class SendMail extends AppCompatActivity {
                 }
 
             }
+            hasfinished=true;
             startActivity(new Intent(SendMail.this,InvelopeActivity.class));
         }
     }
-    /*class PointsChanger extends Thread
+
+    class PointsChanger extends Thread
     {
+
         public PointsChanger()
         {
 
@@ -172,33 +178,45 @@ public class SendMail extends AppCompatActivity {
         @Override
         public void run() {
             super.run();
+
             int len;
-            while (true)
+            String word;
+
+            while (!hasfinished)
             {
                 len=zeroz.getText().toString().length();
+                word=zeroz.getText().toString();
+
+
+
                 if (len>8)
                 {
-                    imageViews[len-8].setImageResource(R.drawable.bluepoint);
-                    zeroz.setText(zeroz.getText().toString()+"0");
-                    if (len==16)
-                        zeroz.setText("0");
+                   // imageViews[len-9].setImageResource(R.drawable.bluepoint);
+                   zeroz.setText(word+"0");
+                    if (len>=16)
+                      zeroz.setText("0");
                 }
                 else
                 {
-                    imageViews[len].setImageResource(R.drawable.redpoint);
-                    zeroz.setText(zeroz.getText().toString()+"0");
+                  //  imageViews[len-1].setImageResource(R.drawable.redpoint);
+                  zeroz.setText(word+"0");
+
                 }
                 try {
-                    InvelopeActivity.InvelopeMover.sleep(100);
+                    PointsChanger.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
 
                 }
 
+
             }
 
+
         }
-    }*/
+    }
+
+
     public Question getQuestionBytext(ArrayList<Question> questions,String theQuestionText)
     {
         for (Question question : questions)

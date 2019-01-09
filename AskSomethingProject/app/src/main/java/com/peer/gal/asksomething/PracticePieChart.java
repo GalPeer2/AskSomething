@@ -94,7 +94,7 @@ public class PracticePieChart extends AppCompatActivity {
 
             public void onSwipeRight() {
                 if (thePlace == 0) {
-                    Toast.makeText(PracticePieChart.this, "first!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PracticePieChart.this, "first!", Toast.LENGTH_SHORT/2).show();
                     return;
                 }
                 thePlace--;
@@ -106,7 +106,7 @@ public class PracticePieChart extends AppCompatActivity {
             public void onSwipeLeft() {
 
                 if (thePlace == user.getMyHistoryQuestions().size() - 1) {
-                    Toast.makeText(PracticePieChart.this, "last!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PracticePieChart.this, "last!", Toast.LENGTH_SHORT/2).show();
                     return;
                 }
                 thePlace++;

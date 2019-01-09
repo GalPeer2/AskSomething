@@ -61,7 +61,7 @@ public class Invelope {
             points[0].y++;
             return;
         }
-        if (points[2].y>-20)
+        if (points[2].y>-25)
         {
             for (Point point : points)
                 point.y=point.y-6;

@@ -68,18 +68,19 @@ public class InvelopeActivity extends AppCompatActivity {
         @Override
         public void run() {
             super.run();
-            while (theInvelope.getPoints()[2].y > 0) {
+            while (theInvelope.getPoints()[2].y > -20) {
                 this.theInvelope.moveTheEnvelope();
                 this.invelopView.postInvalidate();
 
 
                 try {
-                    InvelopeMover.sleep(5);
+                    InvelopeMover.sleep(3);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
 
                 }
             }
+        //    Toast.makeText(InvelopeActivity.this,"Question sent",Toast.LENGTH_SHORT).show();
             startActivity(new Intent(InvelopeActivity.this,MainActivity.class));
 
         }

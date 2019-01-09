@@ -15,9 +15,10 @@ import android.view.View;
  */
 
 public class EnvelopeActivity extends AppCompatActivity {
+    //GARBAGE
     Invelope invelope;
     InvelopeView invelopView;
-    InvelopeMover invelopeMover;
+  //  InvelopeMover invelopeMover;
 
 
 
