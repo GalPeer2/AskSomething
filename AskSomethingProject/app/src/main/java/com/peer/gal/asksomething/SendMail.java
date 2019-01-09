@@ -1,5 +1,6 @@
 package com.peer.gal.asksomething;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -53,7 +54,7 @@ public class SendMail extends AppCompatActivity {
         user=asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName());
 
         MyAddresses=user.getMyEmailAddresses();
-      //  SendTestEmail(null);
+        SendTestEmail(null);
 
         zeroz=(TextView)findViewById(R.id.pointstv);
         imageViews=new ImageView[8];
@@ -65,9 +66,7 @@ public class SendMail extends AppCompatActivity {
         imageViews[5]=(ImageView)findViewById(R.id.p6);
         imageViews[6]=(ImageView)findViewById(R.id.p7);
         imageViews[7]=(ImageView)findViewById(R.id.p8);
-
-        zeroz.setText("00");
-        zeroz.setText("0");
+        
 
        StartChangingPoint();
 
@@ -81,7 +80,7 @@ public class SendMail extends AppCompatActivity {
 
     }
     public void StartChangingPoint() {
-       new Thread(new PointsChanger()).start();
+       new Thread(new PointsChanger(this)).start();
 
     }
 
@@ -169,10 +168,11 @@ public class SendMail extends AppCompatActivity {
 
     class PointsChanger extends Thread
     {
+        private  Activity myActivity;
 
-        public PointsChanger()
+        public PointsChanger(Activity pActivity )
         {
-
+            myActivity = pActivity ;
         }
 
         @Override
@@ -180,7 +180,7 @@ public class SendMail extends AppCompatActivity {
             super.run();
 
             int len;
-            String word;
+            String word = "";
 
             while (!hasfinished)
             {
@@ -191,15 +191,33 @@ public class SendMail extends AppCompatActivity {
 
                 if (len>8)
                 {
-                   // imageViews[len-9].setImageResource(R.drawable.bluepoint);
-                   zeroz.setText(word+"0");
-                    if (len>=16)
-                      zeroz.setText("0");
+                    final String theword = word;
+                    final int theLen=len;
+                    myActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            imageViews[theLen-9].setImageResource(R.drawable.bluepoint);
+                            zeroz.setText(theword+"0");
+                            if (theLen>=16)
+                                zeroz.setText("0");
+                        }
+                    });
+
+
                 }
                 else
                 {
-                  //  imageViews[len-1].setImageResource(R.drawable.redpoint);
-                  zeroz.setText(word+"0");
+
+                    final String theword = word;
+                    final int theLen=len;
+                    myActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            imageViews[theLen-1].setImageResource(R.drawable.redpoint);
+                            zeroz.setText(theword+"0");
+                        }
+                    });
+
 
                 }
                 try {

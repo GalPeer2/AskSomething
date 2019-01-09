@@ -52,7 +52,7 @@ public class Login extends AppCompatActivity {
         asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName()).getMyHistoryQuestions().add(a);
         */
 
-     startActivity(new Intent(Login.this,SendMail.class));
+    // startActivity(new Intent(Login.this,SendMail.class));
     }
 
     public void logIn2(View view)
