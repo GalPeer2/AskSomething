@@ -66,7 +66,7 @@ public class SendMail extends AppCompatActivity {
         imageViews[5]=(ImageView)findViewById(R.id.p6);
         imageViews[6]=(ImageView)findViewById(R.id.p7);
         imageViews[7]=(ImageView)findViewById(R.id.p8);
-        
+
 
        StartChangingPoint();
 

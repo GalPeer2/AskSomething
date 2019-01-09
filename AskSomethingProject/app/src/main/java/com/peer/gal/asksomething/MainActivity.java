@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         a.setPositiveButton("yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                finish();
+                startActivity(new Intent(MainActivity.this,Login.class));
             }
         });
         a.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
