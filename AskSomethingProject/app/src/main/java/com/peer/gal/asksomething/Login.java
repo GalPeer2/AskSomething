@@ -98,6 +98,10 @@ public class Login extends AppCompatActivity {
             Toast.makeText(Login.this,"user name is allready used!!!",Toast.LENGTH_SHORT).show();
             return;
         }
+        if ((nameet.getText().toString().equals(""))) {
+            Toast.makeText(Login.this,"please use normal name!",Toast.LENGTH_SHORT).show();
+            return;
+        }
         //no user name in dictinary
         User user = new User(nameet.getText().toString(), passwordet.getText().toString());
         asklSomeThingState.getDictionary().put(nameet.getText().toString(), user);
@@ -111,8 +115,8 @@ public class Login extends AppCompatActivity {
     public void changeToSignUp(View view)
     {
         if (loginORregister.getText().toString().equals("REGISTER")) {
-            nameet.setText("enter a name for user name");
-            passwordet.setText("enter a password");
+            nameet.setHint("enter a name for user name");
+            passwordet.setHint("enter a password");
             enter.setText("sign up");
             enter.setBackgroundColor(Color.RED);
             title.setText("please sign up:");
@@ -120,8 +124,8 @@ public class Login extends AppCompatActivity {
             loginORregister.setBackgroundColor(Color.MAGENTA);
             return;
         }
-        nameet.setText("USER NAME");
-        passwordet.setText("PASSWORD");
+        nameet.setHint("USER NAME");
+        passwordet.setHint("PASSWORD");
         enter.setText("LOG IN");
         enter.setBackgroundColor(Color.MAGENTA);
         title.setText("please log in:");

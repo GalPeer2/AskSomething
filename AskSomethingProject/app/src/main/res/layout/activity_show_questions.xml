@@ -20,9 +20,19 @@
             android:text="choose question for details" />
 
         <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:id="@+id/listQueLV"
+            android:layout_width="match_parent"
+            android:layout_height="417dp"
             android:background="@drawable/manyasks" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/tohomepage"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="486dp" />
+
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
