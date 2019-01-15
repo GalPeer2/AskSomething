@@ -146,10 +146,10 @@ public class SendMail extends AppCompatActivity {
                     String theAddress = getLocalIpAddress();
 
                     bodyMail = ("<h1>" + que + "</h1><br>Clickme to send: " +
-                            "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&question="+que+"&sendfrom="+user.getName()+"&answer="+ans1+"\">"+ans1+"</a>"+
-                           "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&question="+que+"&sendfrom="+user.getName()+"&answer="+ans2+"\">"+ans2+"</a>"+
-                            "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&question="+que+"&sendfrom="+user.getName()+"&answer="+ans3+"\">"+ans3+"</a>"+
-                           "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&question="+que+"&sendfrom="+user.getName()+"&answer="+ans4+"\">"+ans4+"</a>");
+                            "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&question="+que+"&sender="+user.getName()+"&answer="+ans1+"\">"+ans1+"</a>"+
+                           "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&question="+que+"&sender="+user.getName()+"&answer="+ans2+"\">"+ans2+"</a>"+
+                            "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&question="+que+"&sender="+user.getName()+"&answer="+ans3+"\">"+ans3+"</a>"+
+                           "<br><a href=\"http://" + theAddress + ":5000/?Sendfor="+mailAddress+"&question="+que+"&sender="+user.getName()+"&answer="+ans4+"\">"+ans4+"</a>");
 
 
                     sender.sendMail("Question from "+ user.getName(), bodyMail, "asksomethingsystem@gmail.com", mailAddress);

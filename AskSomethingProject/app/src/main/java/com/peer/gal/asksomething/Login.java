@@ -31,6 +31,9 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+        Listen2MailResultsService.startAction(this , "" , "" );
+
         theStateMgr = new StateMgr(this);
 
         asklSomeThingState = theStateMgr.LoadState();

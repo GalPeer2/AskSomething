@@ -145,12 +145,28 @@ public class Listen2MailResultsService extends IntentService {
 
                 String thequestion = questionlist.get(0);
 
-                List<String> senderlist = request.getQuery().get("sendfrom");
+                List<String> senderlist = request.getQuery().get("sender");
 
-                String theSender = questionlist.get(0);
+                String theSender = senderlist.get(0);
+
+                String senderNotFound =
+
+                        "<!DOCTYPE html> \r\n" +
+                                "<html>  \r\n " +
+                                "<head> \r\n" +
+                                "   <title>Error</title> \r\n " +
+                                "   <meta charset=\"utf-8\" /> \r\n" +
+                                "</head> \r\n " +
+                                "<body> \r\n" +
+
+                                "  <h1>cant find your sender+ "+theSender+"</h1> \r\n" +
+
+                                "</body> \r\n" +
+                                "</html>";
+
                 if (asklSomeThingState.getDictionary().containsKey(theSender)==false)
                 {
-                    response.send("error");
+                    response.send(senderNotFound);
                     return;
                 }
                User user=asklSomeThingState.getDictionary().get(theSender);
@@ -207,22 +223,12 @@ public class Listen2MailResultsService extends IntentService {
                         response.send(allreadyVoted);
                     else {
                         response.send(theThankAswere);
-                        switch (theanswer) {
-                            case ("ans1"): {
-                                questionDealed.getVotersForAns1().add(theNameOfTheUser);
-                                break;
-                            }
-                            case ("ans2"): {
-                                questionDealed.getVotersForAns2().add(theNameOfTheUser);
-                                break;
-                            }
-                            case ("ans3"): {
-                                questionDealed.getVotersForAns3().add(theNameOfTheUser);
-                                break;
-                            }
-                            case ("ans4"): {
-                                questionDealed.getVotersForAns4().add(theNameOfTheUser);
-                                break;
+
+                        for (int i=1;i<=4;i++)
+                        {
+                            if (questionDealed.getAnsByIndex(i).equals(theanswer))
+                            {
+                                questionDealed.getVotersForAnsByIndex(i).add(theNameOfTheUser);
                             }
                         }
                     }
