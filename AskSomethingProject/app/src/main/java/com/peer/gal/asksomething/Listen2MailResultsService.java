@@ -29,6 +29,7 @@ import com.peer.gal.asksomething.State.StateMgr;
  * helper methods.
  */
 public class Listen2MailResultsService extends IntentService {
+
     // TODO: Rename actions, choose action names that describe tasks that this
     // IntentService can perform, e.g. ACTION_FETCH_NEW_ITEMS
     private static final String ACTION_StartListen  = "com.peer.gal.asksomething.action.StartListen2Emails";
@@ -222,13 +223,14 @@ public class Listen2MailResultsService extends IntentService {
                     if (shakran == true)
                         response.send(allreadyVoted);
                     else {
-                        response.send(theThankAswere);
+
 
                         for (int i=1;i<=4;i++)
                         {
                             if (questionDealed.getAnsByIndex(i).equals(theanswer))
                             {
                                 questionDealed.getVotersForAnsByIndex(i).add(theNameOfTheUser);
+                                response.send(theThankAswere);
                             }
                         }
                     }
