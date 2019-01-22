@@ -90,4 +90,9 @@ public class ShowQuestions extends AppCompatActivity {
 
 
     }
+    public void toMainActivity(View view)
+    {
+        startActivity(new Intent(this,MainActivity.class));
+    }
+
 }

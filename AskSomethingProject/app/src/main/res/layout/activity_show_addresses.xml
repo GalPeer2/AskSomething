@@ -30,7 +30,7 @@
         <ListView
             android:id="@+id/ListView"
             android:layout_width="match_parent"
-            android:layout_height="346dp"
+            android:layout_height="316dp"
             android:background="@drawable/mail" />
 
         <EditText
@@ -49,9 +49,12 @@
             android:onClick="add"
             android:src="@android:drawable/ic_menu_send" />
 
-        <TextView
-            android:id="@+id/error"
+        <ImageView
+            android:id="@+id/imageView3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:onClick="toMainActivity"
+            android:src="@drawable/tohomepage" />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

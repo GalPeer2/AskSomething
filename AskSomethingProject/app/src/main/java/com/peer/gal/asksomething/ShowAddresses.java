@@ -1,6 +1,7 @@
 package com.peer.gal.asksomething;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -112,5 +113,9 @@ public class ShowAddresses extends AppCompatActivity {
         finish();
         startActivity(getIntent());
 
+    }
+    public void toMainActivity(View view)
+    {
+        startActivity(new Intent(this,MainActivity.class));
     }
 }
