@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
         theHelloMeg.setText("welcome "+user.getName());
 
+        if (user.getMyHistoryQuestions().size()==0);
+        user.setMyHistoryQuestions(new ExampleUser().getListQuestions());
+
 
 
 

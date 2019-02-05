@@ -83,7 +83,7 @@ public class Login extends AppCompatActivity {
             Toast.makeText(Login.this,"Wrong password or user name",Toast.LENGTH_SHORT).show();
             return;
         }
-        //first register
+        //first register in dictionary
         if (asklSomeThingState==null) {
             asklSomeThingState = new AsklSomeThingState();
             User user = new User(nameet.getText().toString(), passwordet.getText().toString());

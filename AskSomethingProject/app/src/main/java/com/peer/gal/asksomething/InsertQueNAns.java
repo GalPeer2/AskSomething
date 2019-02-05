@@ -55,6 +55,16 @@ public class InsertQueNAns extends AppCompatActivity {
                         Toast.makeText(InsertQueNAns.this," Erase the previous OR change this question",Toast.LENGTH_SHORT).show();
                         return;
                     }
+                    if (que.equals("")||que.equals(" "))
+                    {
+                        Toast.makeText(InsertQueNAns.this,"Insert question!!!",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if(ans1.equals("")||ans1.equals(" ")||ans2.equals("")||ans2.equals(" ")) {
+                        Toast.makeText(InsertQueNAns.this, " At least two first answers must be inserted!!!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
                     Intent toSendMail = new Intent(InsertQueNAns.this, SendMail.class);
                     toSendMail.putExtra("ans1", ans1);
                     toSendMail.putExtra("ans2", ans2);
