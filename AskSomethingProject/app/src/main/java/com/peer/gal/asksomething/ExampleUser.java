@@ -27,9 +27,9 @@ public class ExampleUser {
         String [] arr4 ={"mikel","haron","supermen","sason","mika","adam"};
 
         question.setVotersForAns1(fromArrToList(arr1));
-        question.setVotersForAns1(fromArrToList(arr2));
-        question.setVotersForAns1(fromArrToList(arr3));
-        question.setVotersForAns1(fromArrToList(arr4));
+        question.setVotersForAns2(fromArrToList(arr2));
+        question.setVotersForAns3(fromArrToList(arr3));
+        question.setVotersForAns4(fromArrToList(arr4));
 
         theQuestionsList.add(question);
 
@@ -42,9 +42,9 @@ public class ExampleUser {
         String[] brr4 ={"mikel"};
 
         question.setVotersForAns1(fromArrToList(brr1));
-        question.setVotersForAns1(fromArrToList(brr2));
-        question.setVotersForAns1(fromArrToList(brr3));
-        question.setVotersForAns1(fromArrToList(brr4));
+        question.setVotersForAns2(fromArrToList(brr2));
+        question.setVotersForAns3(fromArrToList(brr3));
+        question.setVotersForAns4(fromArrToList(brr4));
 
         theQuestionsList.add(question);
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -55,9 +55,9 @@ public class ExampleUser {
         String[] crr4 ={"mikel","yuval","guy"};
 
         question.setVotersForAns1(fromArrToList(crr1));
-        question.setVotersForAns1(fromArrToList(crr2));
-        question.setVotersForAns1(fromArrToList(crr3));
-        question.setVotersForAns1(fromArrToList(crr4));
+        question.setVotersForAns2(fromArrToList(crr2));
+        question.setVotersForAns3(fromArrToList(crr3));
+        question.setVotersForAns4(fromArrToList(crr4));
 
         theQuestionsList.add(question);
 
@@ -70,9 +70,9 @@ public class ExampleUser {
         String[] drr4 ={};
 
         question.setVotersForAns1(fromArrToList(drr1));
-        question.setVotersForAns1(fromArrToList(drr2));
-       // question.setVotersForAns1(fromArrToList(drr3));
-       // question.setVotersForAns1(fromArrToList(drr4));
+        question.setVotersForAns2(fromArrToList(drr2));
+       // question.setVotersForAns3(fromArrToList(drr3));
+       // question.setVotersForAns4(fromArrToList(drr4));
 
         theQuestionsList.add(question);
 
@@ -85,9 +85,9 @@ public class ExampleUser {
         String[] err4 ={"mikel","haron","supermen","yuval","guy","daniel"};
 
         question.setVotersForAns1(fromArrToList(err1));
-        question.setVotersForAns1(fromArrToList(err2));
-        question.setVotersForAns1(fromArrToList(err3));
-        question.setVotersForAns1(fromArrToList(err4));
+        question.setVotersForAns2(fromArrToList(err2));
+        question.setVotersForAns3(fromArrToList(err3));
+        question.setVotersForAns4(fromArrToList(err4));
 
         theQuestionsList.add(question);
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

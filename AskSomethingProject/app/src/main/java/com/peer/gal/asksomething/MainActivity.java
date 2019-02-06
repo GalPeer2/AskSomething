@@ -35,13 +35,15 @@ public class MainActivity extends AppCompatActivity {
         asklSomeThingState= theStateMgr.LoadState();
         user=asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName());
 
-        theHelloMeg.setText("welcome "+user.getName());
-
-        if (user.getMyHistoryQuestions().size()==0);
-        user.setMyHistoryQuestions(new ExampleUser().getListQuestions());
 
 
 
+        ExampleUser exampleUser =new ExampleUser();
+        user.setMyHistoryQuestions(exampleUser.getListQuestions());
+        theStateMgr.SaveState(asklSomeThingState);
+
+
+        theHelloMeg.setText("welcome "+user.getName() );
 
 
 
@@ -70,14 +72,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent a1,a2,a3;
-        if (item.getItemId()==R.id.toAdresses) {
-      //     a1 =new Intent(MainActivity.this,ShowAddresses.class);
-        //    startActivity(a1);
+
+        if (item.getItemId()==R.id.history) {
+            moveToYourChoice(findViewById(R.id.historyIV));
         }
-        if (item.getItemId()==R.id.infoapp) {
-       //     a2 =new Intent(MainActivity.this,InfoApp.class);
-      //      startActivity(a2);
+        if (item.getItemId()==R.id.contacts) {
+            moveToYourChoice(findViewById(R.id.CONTACTSiv));
+        }
+        if (item.getItemId()==R.id.newQ) {
+            moveToYourChoice(findViewById(R.id.newQueIV));
         }
         if (item.getItemId()==R.id.exit) {
             exit(null);

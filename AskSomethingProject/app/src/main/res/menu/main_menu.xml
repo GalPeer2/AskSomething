@@ -2,12 +2,16 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/infoapp"
-        android:title="info about app"
+        android:id="@+id/history"
+        android:title="history and analize"
         app:showAsAction="never"></item>
     <item
-        android:id="@+id/toAdresses"
-        android:title="My Email Adresses"
+        android:id="@+id/contacts"
+        android:title="Edit your contacts"
+        app:showAsAction="never"></item>
+    <item
+        android:id="@+id/newQ"
+        android:title="Create new question"
         app:showAsAction="never"></item>
     <item
         android:id="@+id/exit"

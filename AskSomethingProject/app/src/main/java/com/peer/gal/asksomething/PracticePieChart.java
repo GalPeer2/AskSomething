@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.peer.gal.asksomething.State.AsklSomeThingState;
 import com.peer.gal.asksomething.State.StateMgr;
 
+import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -233,7 +234,7 @@ public class PracticePieChart extends AppCompatActivity {
         if (v1 != 0)
             pieData.add(new SliceValue((100 * v1) / (v1 + v2 + v3 + v4), Color.BLUE).setLabel(theQuestionDealed.getAns1() + " : " + v1 + " voters"));
         if (v2 != 0)
-            pieData.add(new SliceValue((v2 * 100) / (v1 + v2 + v3 + v4), Color.GRAY).setLabel(theQuestionDealed.getAns2() + " : " + v2 + " voters"));
+            pieData.add(new SliceValue((100* v2) / (v1 + v2 + v3 + v4), Color.GRAY).setLabel(theQuestionDealed.getAns2() + " : " + v2 + " voters"));
         if (v3 != 0)
             pieData.add(new SliceValue((v3 * 100) / (v1 + v2 + v3 + v4), Color.RED).setLabel(theQuestionDealed.getAns3() + " : " + v3 + " voters"));
         if (v4 != 0)
@@ -246,10 +247,10 @@ public class PracticePieChart extends AppCompatActivity {
 
         pieChartData.setHasLabels(true);
 
-        pieChartData.setHasLabels(true).setValueLabelTextSize(14);
+        pieChartData.setHasLabels(true).setValueLabelTextSize(10);
 
-        pieChartData.setHasCenterCircle(true).setCenterText1(theQuestionDealed.getQue());
-        pieChartData.setCenterText1FontSize(18);
+        pieChartData.setHasCenterCircle(true).setCenterText1( /*downEvery4Words*/(theQuestionDealed.getQue()));
+        pieChartData.setCenterText1FontSize(12);
 
         pieChartView.setPieChartData(pieChartData);
 
@@ -293,5 +294,30 @@ public class PracticePieChart extends AppCompatActivity {
         });
         AlertDialog alertDialog = a.create();
         alertDialog.show();
+    }
+
+
+    public String downEvery4Words(String s)
+    {
+        String theFinalString ="";
+        String [] strings = s.split(" ");
+        int i=0;
+        while (strings.length>i+4);
+        {
+            theFinalString+=strings[i];
+            theFinalString+=strings[i+1];
+            theFinalString+=strings[i+2];
+            theFinalString+=strings[i+3];
+            theFinalString+="\n";
+            i=+4;
+        }
+        while (i<strings.length)
+        {
+            theFinalString+=strings[i];
+            i++;
+        }
+        return theFinalString;
+
+
     }
 }
