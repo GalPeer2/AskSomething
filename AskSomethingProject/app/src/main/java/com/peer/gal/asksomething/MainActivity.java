@@ -37,10 +37,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+/*
         ExampleUser exampleUser =new ExampleUser();
         user.setMyHistoryQuestions(exampleUser.getListQuestions());
         theStateMgr.SaveState(asklSomeThingState);
+        */
 
 
         theHelloMeg.setText("welcome "+user.getName() );
