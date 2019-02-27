@@ -70,7 +70,7 @@ public class SendMail extends AppCompatActivity {
 
        StartChangingPoint();
 
-        //StartHttpServer();
+       // StartHttpServer();
 
     }
 

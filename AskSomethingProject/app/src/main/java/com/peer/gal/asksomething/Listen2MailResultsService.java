@@ -120,7 +120,7 @@ public class Listen2MailResultsService extends IntentService {
 
     private  StateMgr mStateMgr = new StateMgr(this);
 
-    protected void StartHttpServer() {
+    public void StartHttpServer() {
         String theAddress = getLocalIpAddress();
 
         Log.e("LOG_TAG", theAddress);
