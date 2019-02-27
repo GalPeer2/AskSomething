@@ -20,6 +20,8 @@ import com.koushikdutta.async.http.server.HttpServerRequestCallback;
 import com.peer.gal.asksomething.State.AsklSomeThingState;
 import com.peer.gal.asksomething.State.StateMgr;
 
+import java.net.Inet4Address;
+import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -92,8 +94,18 @@ public class SendMail extends AppCompatActivity {
                 NetworkInterface intf = en.nextElement();
                 for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
                     InetAddress inetAddress = enumIpAddr.nextElement();
+
+                    if(inetAddress instanceof Inet6Address){
+                        System.out.println("IPV6");
+                        continue ;
+                    } else if (inetAddress instanceof Inet4Address) {
+                        System.out.println("IPV4");
+                    }
+
                     if (!inetAddress.isLoopbackAddress()) {
                         return inetAddress.getHostAddress().toString();
+
+
                     }
                 }
             }
