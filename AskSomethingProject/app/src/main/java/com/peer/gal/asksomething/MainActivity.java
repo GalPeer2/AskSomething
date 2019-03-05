@@ -35,13 +35,12 @@ public class MainActivity extends AppCompatActivity {
         asklSomeThingState= theStateMgr.LoadState();
         user=asklSomeThingState.getDictionary().get(asklSomeThingState.getUserName());
 
-
-
-/*
+if ((user.getName().equals("example")||user.getName().equals("user")||user.getName().equals("exampleUser"))&&user.getMyHistoryQuestions().size()==0)
+        {
         ExampleUser exampleUser =new ExampleUser();
         user.setMyHistoryQuestions(exampleUser.getListQuestions());
         theStateMgr.SaveState(asklSomeThingState);
-        */
+        }
 
 
         theHelloMeg.setText("welcome "+user.getName() );
@@ -51,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void exit(View view) {
+       // move to Login
         AlertDialog.Builder a = new AlertDialog.Builder(this);
         a.setMessage("Sure you want to exit?");
         a.setPositiveButton("yes", new DialogInterface.OnClickListener() {

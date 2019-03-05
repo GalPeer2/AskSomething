@@ -184,7 +184,7 @@ public class Listen2MailResultsService extends IntentService {
                                 "</head> \r\n " +
                                 "<body> \r\n" +
 
-                                "  <h1>Sorry, "+ user.getName()+"has deleted the question"+"</h1> \r\n" +
+                                "  <h1>Sorry, "+ user.getName()+" has deleted the question"+"</h1> \r\n" +
 
                                 "</body> \r\n" +
                                 "</html>";
